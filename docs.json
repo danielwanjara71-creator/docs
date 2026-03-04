@@ -13,7 +13,8 @@
     "dark": "#76BD22"
   },
   "modeToggle": {
-    "default": "dark"
+    "default": "dark",
+    "isHidden": "true"
   },
   "favicon": "/favicon.svg",
   "navbar": {
