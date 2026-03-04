@@ -1,46 +1,86 @@
 ---
-title: 'Registration & Digital ID Generation'
-description: 'End-to-end workflow of the user onboarding process, including frontend UI steps and backend cryptographic ID generation.'
-icon: 'fingerprint'
+title: 'Registration & Onboarding'
+description: 'A comprehensive breakdown of the Sasini App registration pipeline, including Farmer Validation and Multi-Factor Authentication (MFA).'
+icon: 'shield-check'
 ---
 
-The Sasini App onboarding pipeline is designed to be frictionless for the user while executing complex validation and encryption protocols in the background. This page details the complete registration lifecycle.
+To ensure a highly secure and customized experience, the Sasini App utilizes a multi-step registration pipeline. This process verifies that every user is a legitimate member of the Sasini ecosystem while securing their account with industry-standard cryptography.
 
-## 1. User Interface Workflow
+## 1. Localization & Language Selection
 
-When a new user launches the application, they are routed through the secure onboarding flow.
+Because the Sasini ecosystem spans diverse demographics, the very first step of the journey is localization.
 
 <Steps>
-  <Step title="Initial Launch & Localization">
-    The app automatically detects the device's region. The user is presented with the language selection screen (English, Swahili, French, German).
+  <Step title="Launch the Application">
+    Upon opening the app for the first time, users are presented with a welcome screen to configure their preferred language.
+  </Step>
+  <Step title="Select Preferred Language">
+    Users can choose between **English**, **Swahili**, **French**, or **German**. This selection immediately updates the entire app interface.
     
     <Frame>
-      <img src="/images/language-select.png" alt="Language Selection Screen" />
+      <img src="/images/language-selection.png" alt="Sasini App Language Selection Screen" className="rounded-lg" />
     </Frame>
-  </Step>
-  <Step title="Data Ingestion">
-    The user inputs their primary KYC (Know Your Customer) details:
-    * Full Legal Name
-    * Verified Phone Number (OTP verification required)
-    * Farm Location (Captured via device GPS API)
-    * Primary Produce (Tea, Coffee, Macadamia, Avocado)
   </Step>
 </Steps>
 
-## 2. Backend Architecture: Digital ID Generation
+## 2. Farmer Validation Protocol
 
-Once the frontend submits the user payload, the Sasini backend initiates the Digital ID generation protocol. This is crucial for maintaining traceability across all deliveries and payments.
+Before a new profile can be created, the system must verify that the user is an officially recognized Sasini farmer.
 
-<CodeGroup>
-```json Registration Payload Example
-{
-  "user_data": {
-    "phone": "+254700000000",
-    "national_id": "12345678",
-    "produce_type": ["coffee", "macadamia"],
-    "gps_coordinates": {
-      "lat": -1.2921,
-      "lng": 36.8219
-    }
-  }
-}
+<Accordion title="How Backend Validation Works" icon="server">
+  When the user inputs their Farmer ID, the frontend securely communicates with the **Easyway Web API**. 
+  
+  The system queries the central Sasini database. 
+  * **If Invalid:** The system instantly throws an error message (`Validation Failed: Farmer not found`), preventing unauthorized account creation.
+  * **If Valid:** The system retrieves the farmer's base details and allows them to proceed to the secure account creation phase.
+</Accordion>
+
+<Frame>
+  <img src="/images/farmer-validation.png" alt="Farmer ID Validation Screen" className="rounded-lg" />
+</Frame>
+
+## 3. Account Creation & MFA Setup
+
+Once validated, the user must secure their account using our Multi-Factor Authentication (MFA) parameters.
+
+<Steps>
+  <Step title="Enter Credentials">
+    The user inputs their **Email Address** and creates a secure **Password**.
+  </Step>
+  <Step title="Enforce Password Policies">
+    To protect financial and farm data, the system strictly enforces the following password complexities:
+    * At least one **uppercase letter**
+    * At least one **lowercase letter**
+    * At least one **number**
+    * At least one **special symbol** (e.g., @, #, $, !)
+  </Step>
+  <Step title="Legal Agreements">
+    The user must explicitly check the boxes confirming they have read and agree to the **Terms of Use** and **Privacy Policy**.
+    
+    <Frame>
+      <img src="/images/registration-details.png" alt="Registration Details and Password Screen" className="rounded-lg" />
+    </Frame>
+  </Step>
+</Steps>
+
+## 4. Email Link Verification (MFA)
+
+To prevent fraudulent accounts, Sasini enforces a strict email verification loop.
+
+1. **Verification Dispatched:** Upon submitting their password, a secure verification link is immediately sent to the user's registered email address.
+2. **Action Required:** The user must open their email client and click the secure link to confirm ownership of the address.
+3. **Resend Protocol:** If the email does not arrive, the user must wait **60 seconds** before the system allows them to trigger a new verification link.
+
+<Frame>
+  <img src="/images/email-verification.png" alt="Email Verification Prompt Screen" className="rounded-lg" />
+</Frame>
+
+## 5. Profile Finalization & Dashboard
+
+Once the email link is clicked and verified, the backend finalizes the registration. 
+
+The user's secure profile is saved, their Unique Digital ID is permanently linked to their email, and the app automatically fetches their customized data. The user is then safely navigated to their main **Dashboard**, ready to explore the app!
+
+<Frame>
+  <img src="/images/main-dashboard.png" alt="Sasini App Main Dashboard" className="rounded-lg" />
+</Frame>
