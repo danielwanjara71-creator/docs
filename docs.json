@@ -129,5 +129,12 @@
         ]
       }
     ]
+  },
+  "appearance": {
+    "strict": true,
+    "default": "dark"
+  },
+  "styling": {
+    "codeblocks": "dark"
   }
 }
