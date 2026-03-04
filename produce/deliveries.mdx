@@ -56,44 +56,46 @@ We believe in absolute transparency. The initial view provides a macro-summary o
 
 Farmers are not restricted to the current month; they can traverse their entire historical database using the robust filtering engine.
 
-<Tabs>
-  <Tab title="Date Range Filtering 📊">
-    Users can select a custom `Start Date` and `End Date`. 
-    
-    * **Manual Execution:** The data does not auto-refresh. The user must explicitly tap the **"Filter"** button to execute the new API call, saving their mobile data bandwidth.
-    * **Reset Function:** A quick "Reset Filters" button instantly returns the view to the current month.
-    
-    <Warning>
-      **The 31-Day Query Limit:** To maintain lightning-fast API response times, the system restricts queries to a maximum of 31 days. If a user selects a range spanning 45 days, the app instantly throws a stylized warning prompt: *"Please select a date range of 31 days or less."*
-    </Warning>
+### Date Range Filtering 📊
 
-    <div align="center">
-      <img src="/images/deliveries-filter-warning.jpeg" alt="Filter Warning Prompt" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
-    </div>
+Users can select a custom `Start Date` and `End Date`. 
 
-    <Note>
-      **Empty States (No Records Found):** If the API returns a `200 OK` status but the data array is empty (meaning the farmer made zero deliveries in that selected timeframe), the app gracefully handles the null response. Instead of a blank screen or an error, it displays a friendly "No Records Found" illustration, preventing user confusion.
-    </Note>
+* **Manual Execution:** The data does not auto-refresh. The user must explicitly tap the **"Filter"** button to execute the new API call, saving their mobile data bandwidth.
+* **Reset Function:** A quick "Reset Filters" button instantly returns the view to the current month.
 
-    <div align="center">
-      <img src="/images/deliveries-no-records.jpeg" alt="No Delivery Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
-    </div>
-  </Tab>
-  <Tab title="AI Auto-Summary Statistics ✨">
-    Once a date range is loaded, the integrated **Sasini AI** instantly analyzes the dataset and generates a top-level statistics card.
-    
-    **Metrics Calculated:**
-    * 📦 Total Bags Delivered
-    * ⚖️ Total Cumulative Weight (Kgs)
-    * 📊 Average Weight per Bag
-    * 📈 Daily Average Delivery
-    * 🎯 Range of Kgs (Highest vs. Lowest performing days)
+<Warning>
+  **The 31-Day Query Limit:** To maintain lightning-fast API response times, the system restricts queries to a maximum of 31 days. If a user selects a range spanning 45 days, the app instantly throws a stylized warning prompt: *"Please select a date range of 31 days or less."*
+</Warning>
 
-    <div align="center">
-      <img src="/images/deliveries-ai-summary.jpeg" alt="AI Statistics Summary" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
-    </div>
-  </Tab>
-</Tabs>
+<div align="center">
+  <img src="/images/deliveries-filter-warning.jpeg" alt="Filter Warning Prompt" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+<Note>
+  **Empty States (No Records Found):** If the API returns a `200 OK` status but the data array is empty (meaning the farmer made zero deliveries in that selected timeframe), the app gracefully handles the null response. Instead of a blank screen or an error, it displays a friendly "No Records Found" illustration, preventing user confusion.
+</Note>
+
+<div align="center">
+  <img src="/images/deliveries-no-records.jpeg" alt="No Delivery Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+---
+
+### AI Auto-Summary Statistics ✨
+
+Once a date range is loaded, the integrated **Sasini AI** instantly analyzes the dataset and generates a top-level statistics card.
+
+**Metrics Calculated:**
+* 📦 Total Deliveries Count
+* 🧺 Total Bags Delivered
+* ⚖️ Total Cumulative Weight (Kgs)
+* 📊 Average Weight per Bag
+* 📈 Daily Average Delivery
+* 🎯 Range of Kgs (Highest vs. Lowest performing days)
+
+<div align="center">
+  <img src="/images/deliveries-ai-summary.jpeg" alt="AI Statistics Summary" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
 
 ---
 
