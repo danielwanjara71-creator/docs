@@ -2,10 +2,7 @@
   "$schema": "https://mintlify.com/mint.json",
   "name": "Sasini App",
 
-  "theme": {
-    "mode": "dark",
-    "toggle": false
-  },
+  "theme": "venus",
 
   "colors": {
     "primary": "#76BD22",
