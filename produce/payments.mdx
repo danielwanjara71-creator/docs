@@ -1,0 +1,98 @@
+---
+title: 'Payments & Digital Receipts'
+description: 'Secure, real-time access to financial ledgers, payment breakdowns, and dynamic API-driven account filtering.'
+icon: 'file-invoice-dollar'
+---
+
+The Financial Dashboard provides farmers with absolute clarity regarding their earnings. Built on the identical, highly optimized architecture as the Deliveries module, the Payments page ensures that requesting financial data is fast, secure, and deeply detailed.
+
+## Initializing the Financial Dashboard
+
+Financial data is highly sensitive. The app never caches this data locally; it requests it fresh from the Easyway Web API every single time.
+
+<Steps>
+  <Step title="The Steaming Cup (Loading State)" icon="mug-hot">
+    While the secure API establishes a handshake, the user sees our signature **Steaming Cup Loading Indicator**.
+    
+    <div align="center">
+      <img src="/images/steaming-cup-loading.jpeg" alt="Steaming Cup Loading Indicator" style={{ maxWidth: '250px', margin: '0 auto', borderRadius: '12px' }} />
+    </div>
+  </Step>
+  <Step title="Default View: Current Month" icon="sack-dollar">
+    The dashboard populates with the **Current Month's** payment summaries. It highlights the total `Net Pay` and the specific run types (e.g., Monthly Green Leaf Pay).
+    
+    <div align="center">
+      <img src="/images/payments-default-month.jpeg" alt="Current Month Payments" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+    </div>
+  </Step>
+</Steps>
+
+<Info>
+  **API Timeout Recovery:** If the financial server experiences a cold-start delay, the localized **Refresh 🔄** button appears. Tapping it re-initiates the secure token request to fetch the ledger without restarting the app.
+</Info>
+
+---
+
+## Granular Payment Breakdowns
+
+A total "Net Pay" number is not enough. Farmers need to know exactly how that number was calculated.
+
+<Card title="Tapping for Financial Clarity" icon="receipt" iconType="duotone" color="#76BD22">
+  By tapping on any monthly payment card, the system executes a secondary API request (`/Paymentdetails?index=x`) to pull the exact financial breakdown.
+  
+  **The Breakdown Modal Displays:**
+  * 🟢 **Gross Earnings:** Base calculations for produce delivered (e.g., `GREEN LEAF PAY`).
+  * 🔴 **Deductions:** Itemized list of deductions (e.g., previously ordered farm inputs, fertilizers, or tools).
+  * 🏦 **Remittance:** Bank charges and the final account destination (`Co-operative Bank of Kenya`).
+</Card>
+
+<div align="center">
+  <img src="/images/payment-breakdown-modal.jpeg" alt="Payment Breakdown Details" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+---
+
+## Advanced Time Filtering & Constraints
+
+Farmers can audit their historical earnings spanning years using the integrated filtering tools.
+
+<Tabs>
+  <Tab title="Date Range Filtering">
+    Users utilize the calendar UI to set a `Start Date` and `End Date`.
+    
+    * **Action Required:** The user must tap **"Filter"** to execute the query.
+    * **Reset Function:** Instantly clears the query and returns to the current month.
+    
+    <Warning>
+      **The 31-Day Query Limit:** Just like deliveries, financial queries are capped at a 31-day window to prevent server overload. Selecting a larger range triggers the stylized warning: *"Please select a date range of 31 days or less."*
+    </Warning>
+
+    <div align="center">
+      <img src="/images/payments-filter-warning.jpeg" alt="Financial Filter Warning" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+    </div>
+  </Tab>
+  <Tab title="AI Financial Summaries">
+    The **Sasini AI** engine computes a quick top-level summary of the selected date range:
+    
+    * 💰 Total Gross Processed
+    * 📉 Total Deductions Applied
+    * 💵 Net Take-Home Pay
+    
+    <div align="center">
+      <img src="/images/payments-ai-summary.jpeg" alt="AI Financial Statistics" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+    </div>
+  </Tab>
+</Tabs>
+
+---
+
+## Navigation Efficiency
+
+<Tip>
+  **The Quick-Scroll Floating Action Button (FAB)**
+  When reviewing a long list of historical transaction micro-ledgers, the floating action button (⇪) at the bottom right allows the user to instantly auto-scroll to the top to adjust their filters or download a PDF receipt.
+</Tip>
+
+<div align="center">
+  <img src="/images/payments-fab-scroll.jpeg" alt="Auto Scroll Floating Button" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
