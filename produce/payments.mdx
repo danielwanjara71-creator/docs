@@ -1,10 +1,10 @@
 ---
 title: 'Payments & Digital Receipts'
-description: 'Secure, real-time access to financial ledgers, payment breakdowns, and dynamic API-driven account filtering.'
+description: 'Secure, real-time access to annual financial ledgers, payment breakdowns, and dynamic API-driven account filtering.'
 icon: 'file-invoice-dollar'
 ---
 
-The Financial Dashboard provides farmers with absolute clarity regarding their earnings. Built on the identical, highly optimized architecture as the Deliveries module, the Payments page ensures that requesting financial data is fast, secure, and deeply detailed.
+The Financial Dashboard provides farmers with absolute clarity regarding their earnings. Built on a highly optimized architecture, the Payments page ensures that requesting financial data is fast, secure, and deeply detailed.
 
 ## Initializing the Financial Dashboard
 
@@ -18,18 +18,18 @@ Financial data is highly sensitive. The app never caches this data locally; it r
       <img src="/images/steaming-cup-loading.gif" alt="Animated Steaming Cup Loading Indicator" style={{ maxWidth: '200px', margin: '0 auto', borderRadius: '12px' }} />
     </div>
   </Step>
-  <Step title="Default View: Current Month" icon="sack-dollar">
-    The dashboard populates with the **Current Month's** payment summaries. It highlights the total `Net Pay` and the specific run types (e.g., Monthly Green Leaf Pay).
+  <Step title="Default View: The Current Year" icon="sack-dollar">
+    Unlike deliveries (which are daily), payments are processed monthly. Therefore, the dashboard defaults to the **Current Year's** full ledger, giving the farmer an immediate macro-view of their annual financial health.
     
     <div align="center">
-      <img src="/images/payments-default-month.jpeg" alt="Current Month Payments" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+      <img src="/images/payments-default-year.jpeg" alt="Current Year Payments Ledger" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
     </div>
   </Step>
 </Steps>
 
-<Info>
+<Note>
   **API Timeout Recovery:** If the financial server experiences a cold-start delay, the localized **Refresh 🔄** button appears. Tapping it re-initiates the secure token request to fetch the ledger without restarting the app.
-</Info>
+</Note>
 
 ---
 
@@ -38,7 +38,7 @@ Financial data is highly sensitive. The app never caches this data locally; it r
 A total "Net Pay" number is not enough. Farmers need to know exactly how that number was calculated.
 
 <Card title="Tapping for Financial Clarity" icon="receipt" iconType="duotone" color="#76BD22">
-  By tapping on any monthly payment card, the system executes a secondary API request (`/Paymentdetails?index=x`) to pull the exact financial breakdown.
+  By tapping on any specific month's payment card, the system executes a secondary API request (`/Paymentdetails?index=x`) to pull the exact financial breakdown.
   
   **The Breakdown Modal Displays:**
   * 🟢 **Gross Earnings:** Base calculations for produce delivered (e.g., `GREEN LEAF PAY`).
@@ -52,45 +52,41 @@ A total "Net Pay" number is not enough. Farmers need to know exactly how that nu
 
 ---
 
-## Advanced Time Filtering & Constraints
+## Annual Ledger Filtering 📅
 
-Farmers can audit their historical earnings spanning years using the integrated filtering tools.
+Farmers can audit their historical earnings spanning back multiple years using the integrated filtering tools. 
 
-<Tabs>
-  <Tab title="Date Range Filtering">
-    Users utilize the calendar UI to set a `Start Date` and `End Date`.
-    
-    * **Action Required:** The user must tap **"Filter"** to execute the query.
-    * **Reset Function:** Instantly clears the query and returns to the current month.
-    
-    <Warning>
-      **The 31-Day Query Limit:** Just like deliveries, financial queries are capped at a 31-day window to prevent server overload. Selecting a larger range triggers the stylized warning: *"Please select a date range of 31 days or less."*
-    </Warning>
+Because the data density is lower (maximum 12 records per year), there are no restrictive date-range limits on this page.
 
-    <div align="center">
-      <img src="/images/payments-filter-warning.jpeg" alt="Financial Filter Warning" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
-    </div>
+* **Yearly Selection:** The user selects their desired historical year from the dropdown menu.
+* **The "Apply Filter" Mandate:** To save mobile bandwidth, selecting a year does *not* automatically trigger a server request. The user must explicitly tap the **Apply Filter** button to fetch the new ledger.
+* **Reset Function:** Instantly clears the query and returns to the current year.
 
-    <Info>
-      **Empty States (No Records Found):** If a farmer filters for a month where no produce was delivered and no payment was processed, the API returns an empty dataset. The UI intercepts this and displays a clean, user-friendly "No Records Found" state rather than an intimidating zero-balance ledger.
-    </Info>
+<div align="center">
+  <img src="/images/payments-apply-filter.jpeg" alt="Apply Filter Button Interface" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
 
-    <div align="center">
-      <img src="/images/payments-no-records.jpeg" alt="No Payment Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
-    </div>
-  </Tab>
-  <Tab title="AI Financial Summaries">
-    The **Sasini AI** engine computes a quick top-level summary of the selected date range:
-    
-    * 💰 Total Gross Processed
-    * 📉 Total Deductions Applied
-    * 💵 Net Take-Home Pay
-    
-    <div align="center">
-      <img src="/images/payments-ai-summary.jpeg" alt="AI Financial Statistics" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
-    </div>
-  </Tab>
-</Tabs>
+<Note>
+  **Empty States (No Records Found):** If a farmer filters for a year where no produce was delivered and no payment was processed, the API returns an empty dataset. The UI intercepts this and displays a clean, user-friendly "No Records Found" illustration rather than an intimidating zero-balance error.
+</Note>
+
+<div align="center">
+  <img src="/images/payments-no-records.jpeg" alt="No Payment Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+---
+
+## AI Financial Summaries ✨
+
+Once an annual ledger is loaded, the **Sasini AI** engine computes a quick top-level summary of that specific year:
+
+* 💰 **Total Gross Processed**
+* 📉 **Total Deductions Applied**
+* 💵 **Net Take-Home Pay**
+
+<div align="center">
+  <img src="/images/payments-ai-summary.jpeg" alt="AI Financial Statistics" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
 
 ---
 
@@ -98,7 +94,7 @@ Farmers can audit their historical earnings spanning years using the integrated 
 
 <Tip>
   **The Quick-Scroll Floating Action Button (FAB)**
-  When reviewing a long list of historical transaction micro-ledgers, the floating action button (⇪) at the bottom right allows the user to instantly auto-scroll to the top to adjust their filters or download a PDF receipt.
+  When reviewing a full year of transactions, the floating action button (⇪) at the bottom right allows the user to instantly auto-scroll to the top to adjust their filters or download a PDF receipt.
 </Tip>
 
 <div align="center">
