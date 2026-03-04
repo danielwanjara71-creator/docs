@@ -1,41 +1,39 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Sasini App Documentation",
+  "name": "Sasini Digital Ecosystem",
   "colors": {
-    "primary": "#2C9144",
-    "light": "#07C983",
+    "primary": "#16A34A",
+    "light": "#76BD22",
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "User Guide",
+        "tab": "Farmer Guide",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "System Overview",
             "pages": [
-              "index",
-              "security"
+              "index"
             ]
           },
           {
             "group": "Getting Started",
             "pages": [
-              "getting-started/profile",
-              "getting-started/languages"
+              "getting-started/profile"
             ]
           },
           {
-            "group": "Managing Produce & Finances",
+            "group": "Produce & Financials",
             "pages": [
               "produce/deliveries",
               "produce/payments"
             ]
           },
           {
-            "group": "Farm Management Tools",
+            "group": "Farm Management Logistics",
             "pages": [
               "farm-tools/inputs",
               "farm-tools/pickups",
@@ -43,26 +41,59 @@
             ]
           },
           {
-            "group": "Information & AI",
+            "group": "AI, Insights & Weather",
             "pages": [
               "info/sasini-ai",
-              "info/news-notifications",
-              "info/weather"
-            ]
-          },
-          {
-            "group": "External Resources",
-            "pages": [
-              "resources/training",
-              "resources/retail",
-              "resources/archives"
+              "info/weather",
+              "info/news-markets"
             ]
           },
           {
             "group": "Account & Support",
             "pages": [
-              "support/account",
-              "support/help-center"
+              "support/settings",
+              "support/notifications",
+              "support/help-center",
+              "resources/externals"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Admin Console",
+        "groups": [
+          {
+            "group": "Platform Management",
+            "pages": [
+              "admin/overview",
+              "admin/user-management",
+              "admin/logistics-tracking"
+            ]
+          },
+          {
+            "group": "Communication & Alerts",
+            "pages": [
+              "admin/content-management",
+              "admin/broadcasting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer API",
+        "groups": [
+          {
+            "group": "Architecture & Security",
+            "pages": [
+              "architecture/security",
+              "architecture/integrations"
+            ]
+          },
+          {
+            "group": "Easyway Web API",
+            "pages": [
+              "api-reference/authentication",
+              "api-reference/endpoints"
             ]
           }
         ]
@@ -76,6 +107,10 @@
   "navbar": {
     "links": [
       {
+        "label": "Sasini Portal",
+        "href": "https://sasini.co.ke"
+      },
+      {
         "label": "Support",
         "href": "mailto:support@sasini.co.ke"
       }
@@ -83,7 +118,8 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/sasini"
+      "x": "https://x.com/sasini",
+      "linkedin": "https://linkedin.com/company/sasini"
     }
   }
 }
