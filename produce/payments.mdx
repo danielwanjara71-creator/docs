@@ -70,6 +70,14 @@ Farmers can audit their historical earnings spanning years using the integrated 
     <div align="center">
       <img src="/images/payments-filter-warning.jpeg" alt="Financial Filter Warning" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
     </div>
+
+    <Info>
+      **Empty States (No Records Found):** If a farmer filters for a month where no produce was delivered and no payment was processed, the API returns an empty dataset. The UI intercepts this and displays a clean, user-friendly "No Records Found" state rather than an intimidating zero-balance ledger.
+    </Info>
+
+    <div align="center">
+      <img src="/images/payments-no-records.jpeg" alt="No Payment Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+    </div>
   </Tab>
   <Tab title="AI Financial Summaries">
     The **Sasini AI** engine computes a quick top-level summary of the selected date range:
