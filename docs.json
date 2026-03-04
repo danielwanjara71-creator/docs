@@ -3,9 +3,13 @@
   "theme": "mint",
   "name": "Sasini Digital Ecosystem",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#76BD22",
-    "dark": "#15803D"
+    "primary": "#76BD22",
+    "light": "#A3E635",
+    "dark": "#76BD22"
+  },
+  "modeToggle": {
+    "default": "dark",
+    "isHidden": true
   },
   "favicon": "/favicon.svg",
   "navigation": {
