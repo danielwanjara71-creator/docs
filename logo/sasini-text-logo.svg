@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="40" viewBox="0 0 220 40">
+  <style>
+    .brand { font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+    .sasini { fill: #ffffff; }
+    .app { fill: #76BD22; }
+  </style>
+  <text x="0" y="30" class="brand">
+    <tspan class="sasini">Sasini </tspan><tspan class="app">App</tspan>
+  </text>
+</svg>
