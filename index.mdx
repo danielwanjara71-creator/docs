@@ -1,36 +1,62 @@
 ---
-title: 'Welcome to Sasini App'
-description: 'The complete guide to navigating and utilizing the Sasini Mobile Application.'
-icon: 'house'
+title: 'Sasini App Blueprint'
+description: 'The central source of truth for the Sasini digital ecosystem. Currently covering Phase 1: Tea Operations.'
+icon: 'leaf'
 ---
 
-Welcome to the official documentation for the **Sasini Mobile Application**. 
+Welcome to the official technical and operational documentation for the **Sasini Mobile Application**. 
 
-This platform is a unified digital ecosystem designed for Sasini's core business areas, including tea, coffee, avocado, macadamia, and retail. It serves as your central hub, connecting farmers, buyers, and management to enhance operational efficiency and transparency.
+This documentation serves as a comprehensive blueprint. It details the precise user interfaces, admin console capabilities, and backend API interactions that power our digital agricultural ecosystem.
 
-## What is the Sasini App?
+<Note>
+  **Current Scope (Phase 1):** The application and this documentation are currently fully deployed for **Tea Farmers**. Subsequent phases will integrate Coffee, Macadamia, and Avocado pipelines.
+</Note>
 
-The Sasini App is built to empower over 30,000 smallholder farmers, B2B buyers, and everyday consumers by placing the power of modern agricultural technology right in your pocket. 
+## Platform Capabilities by Role
 
-Whether you are tracking produce deliveries, ordering farm inputs, or asking the Sasini AI for crop advice, this app is designed to make your farming and business experience seamless.
+The Sasini ecosystem is role-based, ensuring that every user interacts only with the data and tools relevant to their position. Choose your perspective below to understand how the platform serves different stakeholders.
 
-## Key Features
+<Tabs>
+  <Tab title="👨‍🌾 For Farmers">
+    **The Mobile Experience**
+    Farmers use the mobile application to digitize their daily operations.
+    * **Green Leaf Tracking:** Real-time visibility into daily weighbridge deliveries.
+    * **Financial Transparency:** Instant access to payment calculations and digital receipts.
+    * **Digital Extension:** AI-powered agronomic advice and real-time alerts.
+  </Tab>
+  <Tab title="🏢 For Administrators">
+    **The Web Console**
+    Factory managers and Extension Officers utilize the admin dashboard for macro-level oversight.
+    * **Yield Aggregation:** Live tracking of daily factory intake across all collection centers.
+    * **Farmer Verification:** Validating and managing the digital profiles of registered outgrowers.
+    * **Discrepancy Resolution:** Flagging and resolving weight anomalies.
+  </Tab>
+  <Tab title="💻 For Developers">
+    **The Technical Stack**
+    Engineers maintaining or integrating with the Sasini platform.
+    * **Easyway Web API:** Secure data exchange protocols for farmer validation and payment retrieval.
+    * **MFA & Encryption:** Implementation details of our Multi-Factor Authentication and data hashing.
+    * **Payload Structures:** Expected JSON schemas for all major endpoints.
+  </Tab>
+</Tabs>
+
+---
+
+## Core System Architecture
+
+To understand the app, you must understand the core pillars it is built upon. 
 
 <CardGroup cols={2}>
-  <Card title="Sasini AI Assistant" icon="robot">
-    Get 24/7 instant agronomic advice, crop-specific tips, and answers to your farming questions powered by advanced AI.
+  <Card title="Registration & MFA" icon="shield-check" color="#76BD22" href="/getting-started/profile">
+    Explore the highly secure onboarding pipeline, including Farmer ID validation and email verification.
   </Card>
-  <Card title="Produce & Payments" icon="sack-dollar">
-    Track your deliveries in real-time, use payment calculators, and instantly download your digital payment receipts.
+  <Card title="Green Leaf Deliveries" icon="scale-unbalanced" color="#76BD22" href="/produce/deliveries">
+    Discover how physical weighbridge data is securely pushed to the mobile app in real-time.
   </Card>
-  <Card title="Farm Management Tools" icon="tractor">
-    Order genuine farm inputs (seeds, fertilizers) directly from Sasini, or request produce pickups if you cannot deliver.
+  <Card title="Financial Ledgers" icon="file-invoice-dollar" color="#76BD22" href="/produce/payments">
+    Review the payment calculation engine and digital receipt generation.
   </Card>
-  <Card title="Real-Time Alerts" icon="cloud-sun">
-    Receive localized weather forecasts, pest outbreak alerts, and live market price updates to plan your farming activities safely.
+  <Card title="API & Backend Security" icon="server" color="#76BD22" href="/architecture/security">
+    Deep-dive into the token-based authorization and end-to-end encryption securing the platform.
   </Card>
 </CardGroup>
-
-## Getting Started
-
-Ready to dive in? Use the menu on the left to navigate through the guides. We recommend starting with **[Getting Started](/getting-started/profile)** to learn how to set up your profile and secure your digital ID.
