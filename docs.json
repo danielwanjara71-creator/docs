@@ -1,17 +1,20 @@
 {
-  "$schema": "https://mintlify.com/mint.json",
+  "$schema": "https://mintlify.com/docs.json",
   "name": "Sasini App",
-
-  "theme": "venus",
-
+  "logo": {
+    "dark": "/logo/sasini-text-logo.svg",
+    "light": "/logo/sasini-text-logo.svg",
+    "href": "https://sasini.co.ke"
+  },
   "colors": {
     "primary": "#76BD22",
     "light": "#A3E635",
     "dark": "#76BD22"
   },
-
+  "modeToggle": {
+    "default": "dark"
+  },
   "favicon": "/favicon.svg",
-
   "navbar": {
     "links": [
       {
@@ -24,7 +27,6 @@
       }
     ]
   },
-
   "footer": {
     "socials": {
       "x": "https://x.com/sasiniplc",
@@ -34,7 +36,6 @@
       "youtube": "https://www.youtube.com/channel/UCtwz5m5FWhxy-qub0N5F-MQ"
     }
   },
-
   "tabs": [
     {
       "name": "Farmer Guide",
@@ -49,15 +50,18 @@
       "url": "architecture/security"
     }
   ],
-
   "navigation": [
     {
       "group": "System Overview",
-      "pages": ["index"]
+      "pages": [
+        "index"
+      ]
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/profile"]
+      "pages": [
+        "getting-started/profile"
+      ]
     },
     {
       "group": "Produce & Financials",
