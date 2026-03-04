@@ -37,93 +37,96 @@
       "youtube": "https://www.youtube.com/channel/UCtwz5m5FWhxy-qub0N5F-MQ"
     }
   },
-  "tabs": [
-    {
-      "name": "Farmer Guide",
-      "url": "index"
-    },
-    {
-      "name": "Admin Console",
-      "url": "admin/overview"
-    },
-    {
-      "name": "Developer API",
-      "url": "architecture/security"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "System Overview",
-      "pages": [
-        "index"
-      ]
-    },
-    {
-      "group": "Getting Started",
-      "pages": [
-        "getting-started/profile"
-      ]
-    },
-    {
-      "group": "Produce & Financials",
-      "pages": [
-        "produce/deliveries",
-        "produce/payments"
-      ]
-    },
-    {
-      "group": "Farm Management Logistics",
-      "pages": [
-        "farm-tools/inputs",
-        "farm-tools/pickups",
-        "farm-tools/pests"
-      ]
-    },
-    {
-      "group": "AI, Insights & Weather",
-      "pages": [
-        "info/sasini-ai",
-        "info/weather",
-        "info/news-markets"
-      ]
-    },
-    {
-      "group": "Account & Support",
-      "pages": [
-        "support/settings",
-        "support/notifications",
-        "support/help-center",
-        "resources/externals"
-      ]
-    },
-    {
-      "group": "Platform Management",
-      "pages": [
-        "admin/overview",
-        "admin/user-management",
-        "admin/logistics-tracking"
-      ]
-    },
-    {
-      "group": "Communication & Alerts",
-      "pages": [
-        "admin/content-management",
-        "admin/broadcasting"
-      ]
-    },
-    {
-      "group": "Architecture & Security",
-      "pages": [
-        "architecture/security",
-        "architecture/integrations"
-      ]
-    },
-    {
-      "group": "Easyway Web API",
-      "pages": [
-        "api-reference/authentication",
-        "api-reference/endpoints"
-      ]
-    }
-  ]
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Farmer Guide",
+        "groups": [
+          {
+            "group": "System Overview",
+            "pages": [
+              "index"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "getting-started/profile"
+            ]
+          },
+          {
+            "group": "Produce & Financials",
+            "pages": [
+              "produce/deliveries",
+              "produce/payments"
+            ]
+          },
+          {
+            "group": "Farm Management Logistics",
+            "pages": [
+              "farm-tools/inputs",
+              "farm-tools/pickups",
+              "farm-tools/pests"
+            ]
+          },
+          {
+            "group": "AI, Insights & Weather",
+            "pages": [
+              "info/sasini-ai",
+              "info/weather",
+              "info/news-markets"
+            ]
+          },
+          {
+            "group": "Account & Support",
+            "pages": [
+              "support/settings",
+              "support/notifications",
+              "support/help-center",
+              "resources/externals"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Admin Console",
+        "groups": [
+          {
+            "group": "Platform Management",
+            "pages": [
+              "admin/overview",
+              "admin/user-management",
+              "admin/logistics-tracking"
+            ]
+          },
+          {
+            "group": "Communication & Alerts",
+            "pages": [
+              "admin/content-management",
+              "admin/broadcasting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer API",
+        "groups": [
+          {
+            "group": "Architecture & Security",
+            "pages": [
+              "architecture/security",
+              "architecture/integrations"
+            ]
+          },
+          {
+            "group": "Easyway Web API",
+            "pages": [
+              "api-reference/authentication",
+              "api-reference/endpoints"
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
