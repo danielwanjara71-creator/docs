@@ -1,0 +1,81 @@
+---
+title: 'Deliveries & Real-Time Tracking'
+description: 'Complete lifecycle of produce delivery, from weighbridge integration to digital receipt generation.'
+icon: 'truck'
+---
+
+The Sasini App transforms how deliveries are logged and tracked. By digitizing the weighbridge process, farmers and B2B buyers have absolute, real-time visibility into their produce metrics, eliminating paper trails and reducing discrepancies.
+
+## The Delivery Lifecycle
+
+When a farmer arrives at a Sasini collection center or factory, the process is heavily automated to ensure speed and accuracy.
+
+<Steps>
+  <Step title="Arrival & Identification">
+    The farmer presents their **Unique Digital ID** (via QR code or Farmer ID number) at the collection center. The clerk scans it, instantly pulling up the farmer's profile on the centralized Sasini system.
+  </Step>
+  <Step title="Weighbridge Integration">
+    The produce (Tea, Coffee, Macadamia, or Avocado) is weighed. The digital scale is integrated directly with the Sasini backend, automatically pushing the exact <Tooltip tip="Measured in Kilograms (kg) to two decimal places.">net weight</Tooltip> to the app.
+  </Step>
+  <Step title="Instant Push Notification">
+    The moment the weight is logged, the farmer receives an instant push notification on their Sasini Mobile App confirming the delivery.
+    
+    <div align="center">
+      <img src="/images/delivery-notification.jpeg" alt="Push Notification for Delivery" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+    </div>
+  </Step>
+</Steps>
+
+---
+
+## Interactive Delivery Dashboard
+
+The user interface is designed to be highly visual, using our vibrant `#76BD22` green to highlight successful deliveries and positive metrics.
+
+<Tabs>
+  <Tab title="Farmer View (Mobile App)">
+    Farmers can view a beautifully visualized history of all deliveries. 
+    * **Daily Logs:** Shows exact time, date, and weight of each drop-off.
+    * **Monthly Aggregates:** A dynamic chart showing total yield for the current harvest season.
+    * **Quality Grades:** If applicable (e.g., Macadamia nut quality), the grade is displayed alongside the weight.
+
+    <div align="center">
+      <img src="/images/delivery-history.jpeg" alt="Delivery History Dashboard" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+    </div>
+  </Tab>
+  <Tab title="Admin View (Web Console)">
+    Factory managers and Extension Officers have a macro-view of all incoming deliveries.
+    * **Live Inflow:** Real-time tracking of total tonnes received today.
+    * **Discrepancy Flags:** AI-powered alerts if a delivery weight drastically exceeds a farmer's historical yield, triggering a manual review.
+  </Tab>
+</Tabs>
+
+---
+
+## Technical Details: The Data Payload
+
+For administrators and developers, understanding exactly what data is captured during a delivery is crucial. Below is the exact data structure generated the moment produce hits the scale.
+
+<Info>
+  **Data Integrity:** All delivery logs are immutable. Once a delivery is synced to the backend, it cannot be altered by the farmer or the local clerk, preventing tampering.
+</Info>
+
+<ParamField path="delivery_id" type="string" required>
+  A unique, encrypted 16-character alphanumeric string generated for every single drop-off.
+</ParamField>
+<ParamField path="farmer_id" type="string" required>
+  The Unique Digital ID of the farmer making the delivery.
+</ParamField>
+<ParamField path="produce_type" type="enum" required>
+  Must be one of: `tea`, `coffee`, `macadamia`, `avocado`.
+</ParamField>
+<ParamField path="net_weight_kg" type="float" required>
+  The final weight of the produce, strictly verified by the automated scale.
+</ParamField>
+<ParamField path="timestamp" type="ISO 8601 Date" required>
+  The exact time the weight was recorded to the millisecond.
+</ParamField>
+
+<Card title="Need to request a farm pickup?" icon="tractor" iconType="duotone" color="#76BD22">
+  If a farmer cannot physically deliver their produce to the center, they can request a Sasini logistics vehicle directly through the app. **[Learn how to request a pickup &rarr;](/farm-tools/pickups)**
+</Card>
