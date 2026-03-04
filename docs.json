@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Sasini Digital Ecosystem",
+  "name": "Sasini App",
   "colors": {
     "primary": "#76BD22",
     "light": "#A3E635",
@@ -12,6 +12,27 @@
     "isHidden": true
   },
   "favicon": "/favicon.svg",
+  "navbar": {
+    "links": [
+      {
+        "label": "Sasini Portal",
+        "href": "https://sasini.co.ke"
+      },
+      {
+        "label": "Help Center",
+        "href": "/support/help-center"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/sasiniplc",
+      "instagram": "https://www.instagram.com/sasiniplc/?hl=en",
+      "facebook": "https://www.facebook.com/SasiniTeaandCoffee",
+      "linkedin": "https://ke.linkedin.com/company/sasini-plc",
+      "youtube": "https://www.youtube.com/channel/UCtwz5m5FWhxy-qub0N5F-MQ"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -103,31 +124,5 @@
         ]
       }
     ]
-  },
-  "logo": {
-    "dark": "/logo/Sasini Logo.png",
-    "light": "/logo/Sasini Logo.png",
-    "href": "https://sasini.co.ke"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Sasini Portal",
-        "href": "https://sasini.co.ke"
-      },
-      {
-        "label": "Help Center",
-        "href": "/support/help-center"
-      }
-    ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/sasiniplc",
-      "instagram": "https://www.instagram.com/sasiniplc/?hl=en",
-      "facebook": "https://www.facebook.com/SasiniTeaandCoffee",
-      "linkedin": "https://ke.linkedin.com/company/sasini-plc",
-      "youtube": "https://www.youtube.com/channel/UCtwz5m5FWhxy-qub0N5F-MQ"
-    }
   }
 }
