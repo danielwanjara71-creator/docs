@@ -1,47 +1,46 @@
 ---
-title: 'Profile & Registration'
-description: 'Create your account and secure your Unique Digital ID.'
-icon: 'user-vneck'
+title: 'Registration & Digital ID Generation'
+description: 'End-to-end workflow of the user onboarding process, including frontend UI steps and backend cryptographic ID generation.'
+icon: 'fingerprint'
 ---
 
-Welcome to the Sasini family! Setting up your profile is your first step toward unlocking the full power of the Sasini App[cite: 74, 75]. 
+The Sasini App onboarding pipeline is designed to be frictionless for the user while executing complex validation and encryption protocols in the background. This page details the complete registration lifecycle.
 
-Whether you are a smallholder farmer or a B2B buyer, your profile acts as your secure gateway to our traceability and financial tools[cite: 153].
+## 1. User Interface Workflow
 
-## The Onboarding Journey
-
-We have designed a tailored onboarding workflow that is simple, guided, and highly secure[cite: 154, 157]. Follow these steps to get officially recognized in the Sasini system[cite: 79].
+When a new user launches the application, they are routed through the secure onboarding flow.
 
 <Steps>
-  <Step title="Download & Open">
-    Launch the Sasini Mobile App on your device and select **Create an Account**[cite: 75]. 
+  <Step title="Initial Launch & Localization">
+    The app automatically detects the device's region. The user is presented with the language selection screen (English, Swahili, French, German).
+    
+    <Frame>
+      <img src="/images/language-select.png" alt="Language Selection Screen" />
+    </Frame>
   </Step>
-  <Step title="Provide Your Details">
-    Enter your core information to build your digital footprint:
-    * Full Name & Phone Number [cite: 76]
-    * National ID or Passport [cite: 76]
-    * Farm Location (GPS coordinates, if available) [cite: 160]
-    * Primary Crop Type (Tea, Coffee, Macadamia, or Avocado) [cite: 76]
-  </Step>
-  <Step title="Generate Digital ID">
-    Once you submit your details, our encrypted backend system will instantly generate your **Unique Digital ID**[cite: 77]. This ID connects you to all your future deliveries and payments.
-  </Step>
-  <Step title="Confirmation">
-    You will receive a success notification[cite: 78]. You are now officially onboarded and can log in to explore your customized dashboard!
+  <Step title="Data Ingestion">
+    The user inputs their primary KYC (Know Your Customer) details:
+    * Full Legal Name
+    * Verified Phone Number (OTP verification required)
+    * Farm Location (Captured via device GPS API)
+    * Primary Produce (Tea, Coffee, Macadamia, Avocado)
   </Step>
 </Steps>
 
-## Profile Management
+## 2. Backend Architecture: Digital ID Generation
 
-Your profile is the cornerstone of our compliance and traceability system[cite: 160]. You maintain full autonomy over your account and can manage it at any time[cite: 148, 151].
+Once the frontend submits the user payload, the Sasini backend initiates the Digital ID generation protocol. This is crucial for maintaining traceability across all deliveries and payments.
 
-<AccordionGroup>
-  <Accordion title="Updating Farm Details" icon="leaf">
-    If you expand your farm or add new crop types, you can update your profile seamlessly. Keeping this updated ensures the Sasini AI gives you the most accurate, crop-specific agronomic advice[cite: 117].
-  </Accordion>
-  <Accordion title="Data Privacy & Deletion" icon="trash">
-    You have absolute control over your personal data. If you choose to leave the platform, you can navigate to Profile Settings and select **"Delete My Account"**[cite: 148, 150]. 
-    
-    *Note: You will receive a warning prompt, as account deletion is permanent and results in lost access to the platform[cite: 150].*
-  </Accordion>
-</AccordionGroup>
+<CodeGroup>
+```json Registration Payload Example
+{
+  "user_data": {
+    "phone": "+254700000000",
+    "national_id": "12345678",
+    "produce_type": ["coffee", "macadamia"],
+    "gps_coordinates": {
+      "lat": -1.2921,
+      "lng": 36.8219
+    }
+  }
+}
