@@ -1,7 +1,7 @@
 ---
 title: 'Deliveries & Live Tracking'
 description: 'Comprehensive guide to the Green Leaf delivery pipeline, dynamic filtering, AI statistical summaries, and granular weighbridge breakdowns.'
-icon: 'truck'
+icon: 'truck-ramp-box'
 ---
 
 The Deliveries module is the heartbeat of the farmer's daily interaction with the Sasini ecosystem. It is designed to be highly responsive, fetching live data directly from the Sasini servers to ensure absolute accuracy and transparency.
@@ -16,7 +16,7 @@ When a user navigates to the Deliveries page, the app immediately establishes a 
     
     <div align="center">
       <img src="/images/steaming-cup-loading.gif" alt="Animated Steaming Cup Loading Indicator" style={{ maxWidth: '200px', margin: '0 auto', borderRadius: '12px' }} />
-   </div>
+    </div>
   </Step>
   <Step title="Default View: Current Month" icon="calendar-check">
     Upon a successful API response, the dashboard automatically populates with the **Current Month's** delivery data. 
@@ -69,6 +69,14 @@ Farmers are not restricted to the current month; they can traverse their entire 
 
     <div align="center">
       <img src="/images/deliveries-filter-warning.jpeg" alt="Filter Warning Prompt" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+    </div>
+
+    <Info>
+      **Empty States (No Records Found):** If the API returns a `200 OK` status but the data array is empty (meaning the farmer made zero deliveries in that selected timeframe), the app gracefully handles the null response. Instead of a blank screen or an error, it displays a friendly "No Records Found" illustration, preventing user confusion.
+    </Info>
+
+    <div align="center">
+      <img src="/images/deliveries-no-records.jpeg" alt="No Delivery Records Found" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
     </div>
   </Tab>
   <Tab title="AI Auto-Summary Statistics">
