@@ -1,6 +1,5 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "$schema": "https://mintlify.com/mint.json",
   "name": "Sasini App",
   "colors": {
     "primary": "#76BD22",
