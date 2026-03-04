@@ -1,62 +1,91 @@
 ---
-title: 'Sasini App Blueprint'
-description: 'The central source of truth for the Sasini digital ecosystem. Currently covering Phase 1: Tea Operations.'
-icon: 'leaf'
+title: 'Sasini Digital Ecosystem Blueprint'
+description: 'The definitive architectural and operational guide for the Sasini Mobile App and Administrative Web Console.'
+icon: 'globe'
 ---
 
-Welcome to the official technical and operational documentation for the **Sasini Mobile Application**. 
+Welcome to the central source of truth for the **Sasini Digital Ecosystem**. 
 
-This documentation serves as a comprehensive blueprint. It details the precise user interfaces, admin console capabilities, and backend API interactions that power our digital agricultural ecosystem.
+This platform bridges the gap between agricultural operations and cutting-edge technology, unifying over 30,000 farmers, supply chain administrators, and automated backend APIs into a single, seamless environment.
 
 <Note>
-  **Current Scope (Phase 1):** The application and this documentation are currently fully deployed for **Tea Farmers**. Subsequent phases will integrate Coffee, Macadamia, and Avocado pipelines.
+  **Current Scope:** While the app architecture supports multiple commodities (Coffee, Macadamia, Avocado), this documentation currently focuses on our live, active deployment for **Tea Farmers**.
 </Note>
 
 ## Platform Capabilities by Role
 
-The Sasini ecosystem is role-based, ensuring that every user interacts only with the data and tools relevant to their position. Choose your perspective below to understand how the platform serves different stakeholders.
+The Sasini platform is strictly role-based. Below is the complete feature matrix detailing exactly what each stakeholder can achieve within the ecosystem.
 
 <Tabs>
-  <Tab title="👨‍🌾 For Farmers">
+  <Tab title="👨‍🌾 The Farmer App">
     **The Mobile Experience**
-    Farmers use the mobile application to digitize their daily operations.
-    * **Green Leaf Tracking:** Real-time visibility into daily weighbridge deliveries.
-    * **Financial Transparency:** Instant access to payment calculations and digital receipts.
-    * **Digital Extension:** AI-powered agronomic advice and real-time alerts.
+    A robust, multi-lingual interface (Swahili, French, German, English) empowering farmers to manage their entire business from their pocket.
+
+    <AccordionGroup>
+      <Accordion title="Produce & Financials" icon="sack-dollar">
+        * **Delivery Tracking:** Real-time visibility into weighbridge deliveries with advanced date filtering and live total-yield statistics.
+        * **Payment Overview:** Instant access to payment histories, breakdowns, and downloadable digital receipts, filterable by any date.
+      </Accordion>
+      <Accordion title="Farm Management & Logistics" icon="tractor">
+        * **Farm Input Ordering:** Browse, order, and track the status of genuine seeds, fertilizers, and farming tools.
+        * **Pickup Requests:** Request Sasini logistics to collect produce from the farm, or suggest new collection routes.
+        * **Pest Reports:** Instantly report localized outbreaks (with images) to alert Sasini agronomists.
+      </Accordion>
+      <Accordion title="AI, Insights & Weather" icon="microchip">
+        * **Sasini AI Assistant:** A powerful, highly-tuned agricultural chatbot powered by the latest **Google Gemini** technology to answer complex farming queries.
+        * **Live Weather:** App-native basic forecasts powered by external weather APIs, with deep-dive location details via external links.
+        * **News & Markets:** Live updates on global commodity prices, market trends, and Sasini announcements.
+      </Accordion>
+      <Accordion title="Account, Support & Externals" icon="user-gear">
+        * **Personalization:** Change profile pictures, update passwords, or request account deactivation.
+        * **Help & Feedback:** Submit direct feedback, access comprehensive FAQs, and contact support.
+        * **Instant Notifications:** Receive highly personalized push notifications directly from Sasini management.
+        * **External Hubs:** Quick links to the Sasini Retail Store, the Farmer Training Center, and Financial Archives.
+      </Accordion>
+    </AccordionGroup>
   </Tab>
-  <Tab title="🏢 For Administrators">
-    **The Web Console**
-    Factory managers and Extension Officers utilize the admin dashboard for macro-level oversight.
-    * **Yield Aggregation:** Live tracking of daily factory intake across all collection centers.
-    * **Farmer Verification:** Validating and managing the digital profiles of registered outgrowers.
-    * **Discrepancy Resolution:** Flagging and resolving weight anomalies.
+
+  <Tab title="🏢 Admin Web Console">
+    **The Nerve Center**
+    Sasini administrators, managers, and extension officers use a centralized web dashboard to control the flow of information and logistics.
+    
+    * **Logistics Tracking:** Monitor and process incoming pickup requests, farm input orders, and active pest reports in real-time.
+    * **Content Management:** Publish breaking news, update live market prices, trigger global alerts, and post "Daily Farming Tips."
+    * **User Management:** Verify new farmer registrations, handle account deactivation requests, and resolve submitted feedback or support tickets.
+    * **Targeted Notifications:** Dispatch personalized push notifications to specific farmers, regions, or the entire user base.
   </Tab>
-  <Tab title="💻 For Developers">
-    **The Technical Stack**
-    Engineers maintaining or integrating with the Sasini platform.
-    * **Easyway Web API:** Secure data exchange protocols for farmer validation and payment retrieval.
-    * **MFA & Encryption:** Implementation details of our Multi-Factor Authentication and data hashing.
-    * **Payload Structures:** Expected JSON schemas for all major endpoints.
+
+  <Tab title="💻 Developer Architecture">
+    **The Technical Backbone**
+    
+
+[Image of cloud computing architecture diagram]
+
+    The ecosystem relies on a highly secure, microservice-driven architecture integrating internal servers with global tech providers.
+
+    * **Easyway Web API:** The proprietary RESTful backend handling farmer validation, secure data ingestion, and token-based authentication (MFA).
+    * **Google Cloud Integrations:** Direct server-to-server connections utilizing **Google Gemini** for the AI Assistant, **Google Search** algorithms for data retrieval, and leading Weather APIs for localized forecasting.
+    * **Security Posture:** End-to-end encryption, strict password policies, and Unique Digital ID hashing to ensure absolute data sovereignty.
   </Tab>
 </Tabs>
 
 ---
 
-## Core System Architecture
+## Explore the Documentation
 
-To understand the app, you must understand the core pillars it is built upon. 
+Dive deeper into specific modules. Use these quick links to navigate the most critical components of the Sasini App.
 
 <CardGroup cols={2}>
   <Card title="Registration & MFA" icon="shield-check" color="#76BD22" href="/getting-started/profile">
-    Explore the highly secure onboarding pipeline, including Farmer ID validation and email verification.
+    Review the localized onboarding pipeline, Multi-Factor Authentication, and Digital ID generation.
   </Card>
-  <Card title="Green Leaf Deliveries" icon="scale-unbalanced" color="#76BD22" href="/produce/deliveries">
-    Discover how physical weighbridge data is securely pushed to the mobile app in real-time.
+  <Card title="Deliveries & Payments" icon="scale-unbalanced" color="#76BD22" href="/produce/deliveries">
+    Explore the weighbridge integration, data payloads, and financial ledger calculations.
   </Card>
-  <Card title="Financial Ledgers" icon="file-invoice-dollar" color="#76BD22" href="/produce/payments">
-    Review the payment calculation engine and digital receipt generation.
+  <Card title="Farm Inputs & Logistics" icon="truck-fast" color="#76BD22" href="/farm-tools/inputs">
+    Discover the e-commerce flow for ordering fertilizers and scheduling physical produce pickups.
   </Card>
-  <Card title="API & Backend Security" icon="server" color="#76BD22" href="/architecture/security">
-    Deep-dive into the token-based authorization and end-to-end encryption securing the platform.
+  <Card title="Sasini AI & Insights" icon="robot" color="#76BD22" href="/info/sasini-ai">
+    Deep-dive into the Google Gemini integration, pest reporting architecture, and live market feeds.
   </Card>
 </CardGroup>
