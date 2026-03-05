@@ -137,21 +137,20 @@ To eliminate fraudulent registrations and guarantee secure communication channel
 
 Upon successful token verification, the backend commits the registration data and provisions the user's secure environment.
 
+<Accordion title="Backend Security: Secure Sessions & Audit Logging" icon="server">
+  **What happens under the hood:** After verification, the server issues a secure **JWT session token** used to authenticate all user actions, with frequent rotation to limit hijacked sessions. The event is also recorded in an **immutable, write-only audit log** to ensure permanent traceability and ongoing security monitoring.
+</Accordion>
+``` 🔐
+
 <Steps>
   <Step title="Data Synchronization">
     The user's Unique Digital ID is finalized, and the application securely syncs historical harvest data, delivery logs, and payment ledgers from the factory servers.
 
-    <Accordion title="Backend Security: JWT Session Issuance" icon="server">
-      **What happens under the hood:** Upon successful verification, the server issues a secure **JSON Web Token (JWT)**. This token acts as a highly secure digital passport that is required for every single action the user takes moving forward. The token rotates securely, meaning even if a session is hijacked, it becomes useless within minutes, automatically locking out unauthorized users.
-    </Accordion>
   </Step>
 
   <Step title="Enter the Dashboard">
     The user is routed directly to the main **Dashboard**, finalizing the onboarding sequence.
 
-    <Accordion title="Backend Security: Immutable Audit Logging" icon="server">
-      **What happens under the hood:** The final step of registration triggers an automated, immutable log in our deep backend. The system records the successful secure registration in a write-only database vault. This provides complete traceability and ensures total transparency and security monitoring for the lifetime of the farmer's account.
-    </Accordion>
   </Step>
 </Steps>
 
@@ -180,40 +179,6 @@ Subsequent access to the platform requires strict authentication. While streamli
 <div align="center">
   <img src="/images/login-screen.jpeg" alt="Sasini App Login Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
-
-### 2. Contextual Risk Analysis
-
-<Steps>
-  <Step title="Evaluate Login Context">
-    The backend runs an immediate contextual evaluation, comparing the geographic location and device fingerprint against historical user patterns.
-    
-    <Accordion title="Backend Security: Heuristic Threat Modeling" icon="server">
-      **What happens under the hood:** The backend analyzes device fingerprint and IP location. If a farmer logs in from Nairobi, and 10 minutes later a login attempt occurs from Eastern Europe, the heuristic engine flags it as impossible and blocks the foreign IP.
-    </Accordion>
-  </Step>
-  <Step title="Manage Failed Attempts">
-    Unsuccessful authentication attempts are strictly mitigated to prevent brute-force intrusion.
-    
-    <Accordion title="Backend Security: Exponential Backoff Protocol" icon="server">
-      **What happens under the hood:** To defeat "Credential Stuffing" (where hackers use lists of stolen passwords from other websites), the backend uses Exponential Backoff. After 3 failed login attempts, the server introduces a time delay. After 5 attempts, the account is temporarily locked, requiring an email reset. 
-    </Accordion>
-  </Step>
-</Steps>
-
-### 3. Session Issuance 
-
-<Steps>
-  <Step title="Access Granted">
-    Verified requests are issued a secure session token, and the user is granted access to the internal platform.
-    
-    <Accordion title="Backend Security: Short-Lived JWT & Device Binding" icon="server">
-      **What happens under the hood:** The server issues a highly secure JSON Web Token (JWT). This token acts as a digital, temporary passport required for every action the user takes. It is strictly bound to the user's specific device fingerprint. Furthermore, the token is "Short-Lived"—it automatically expires in the background and is silently refreshed. This means even if a highly sophisticated hacker managed to steal the session data, the token would be useless to them within minutes.
-    </Accordion>
-    <Accordion title="Backend Security: Immutable Access Logging" icon="server">
-      **What happens under the hood:** The successful login triggers an automated log in our deep backend vault. This system records the time, IP, and device of the successful login in a write-only database. This provides complete traceability and ensures total transparency for the lifetime of the farmer's account, guaranteeing absolute data integrity.
-    </Accordion>
-  </Step>
-</Steps>
 
 ---
 
@@ -301,10 +266,6 @@ When a user actively chooses to update their password from within the applicatio
   </Step>
 </Steps>
 
-<div align="center">
-  <img src="/images/change-password-flow.jpeg" alt="Strict Password Change Flow" style={{ maxWidth: '600px', margin: '0 auto', borderRadius: '12px' }} />
-</div>
-
 <Tip>
   **Proactive Security:** For maximum account integrity, cybersecurity standards recommend updating your password every 90 to 120 days.
 </Tip>
@@ -314,7 +275,7 @@ When a user actively chooses to update their password from within the applicatio
 Users maintain full autonomy over their digital footprint and may request account deactivation at any time via the Security Settings.
 
 <Warning>
-  **Critical Notice:** Account deletion is irreversible following the 30-day grace period. Historical harvest weights, payment ledgers, and AI-driven agricultural insights cannot be recovered once purged.
+  **Critical Notice:** Account deactivation is **reversible** whereas Account deletion is **irreversible**. Historical harvest weights, payment ledgers, and AI-driven agricultural insights cannot be recovered once purged.
 </Warning>
 
 <Steps>
@@ -326,7 +287,7 @@ Users maintain full autonomy over their digital footprint and may request accoun
     </div>
   </Step>
   <Step title="Grace Period">
-    The account is transitioned into a suspended state for 30 days. The user may rescind the deactivation request simply by executing a successful login within this timeframe.
+    For **Deleted** accounts, the account is transitioned into a suspended state for 30 days. But for **Deactivated** accounts, the user may rescind the deactivation request simply by executing a successful login or Contacting the Support team for activation purposes.
   </Step>
   <Step title="Permanent Purge">
     Following the 30-day window, the system executes a permanent data purge.
