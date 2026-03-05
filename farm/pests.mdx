@@ -1,0 +1,90 @@
+---
+title: 'Pest & Disease Reporting'
+icon: 'bug'
+---
+
+<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
+  Protect your yield and your neighbors. Use the Pest Reporting tool to instantly alert Sasini agronomists about outbreaks, request targeted assistance, and map disease spread.
+</p>
+
+Agricultural threats spread rapidly. The Pest & Disease Reporting page is a vital community tool. By reporting anomalies on your farm early, you accomplish two things: First, you alert the Sasini extension officers who can provide you with targeted chemical treatments. Second, you help map outbreaks, allowing the factory to warn neighboring farmers before the pests reach their crops.
+
+---
+
+## 1. Documenting the Outbreak
+
+To give our agronomists the best chance of diagnosing the issue remotely, the reporting form requires specific, detailed parameters.
+
+<Steps>
+  <Step title="Open the Reporting Tool">
+    Navigate to the **Pest & Disease** page and tap **Report New Outbreak**.
+  </Step>
+
+  <Step title="Select the Affected Crop & Location">
+    * **Crop Affected:** Choose the specific crop line currently under attack (e.g., Tea, Coffee, Macadamia).
+    * **Location:** Confirm if the outbreak is at your main registered farm, or drop a GPS pin if it is at a secondary plot.
+  </Step>
+
+  <Step title="Categorize the Threat">
+    * **Pest/Disease Type (Multi-Select):** You can check multiple boxes if you are facing several issues at once (e.g., *Aphids*, *Coffee Berry Borer*, *Leaf Rust*). If you don't know what it is, select *Unknown*.
+    * **Severity Level:** Tap to select the current state of the farm: **Low**, **Medium**, **High**, or **Extreme** (crop failure imminent).
+  </Step>
+</Steps>
+
+<div align="center">
+  <img src="/images/pest-form-details.jpeg" alt="Pest and Disease Input Form" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
+
+<Tip>
+  **Detailed Descriptions Save Crops:** In the **Symptoms Description** box, be as detailed as possible. Note things like "leaves turning yellow at the edges" or "white powder under the stems." This text is read directly by expert agronomists.
+</Tip>
+
+---
+
+## 2. Photographic Evidence & Submission
+
+Agronomists cannot prescribe chemical treatments without visual confirmation of the disease. 
+
+<Steps>
+  <Step title="Upload Proof">
+    Tap the **Camera Icon** and take a clear, close-up photograph of the affected leaf, stem, or pest. *The system will not allow you to submit a report without an image.*
+  </Step>
+
+  <Step title="Submit the Report">
+    Tap **Submit Report**. 
+    1. A **Thank You** message will appear on screen, acknowledging your help in protecting the farming community.
+    2. The report is instantly transmitted to the Sasini agricultural desk.
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Epidemiological Data Aggregation" icon="server">
+    **Under the Hood:** When a report is submitted, the backend strips personal identifiers and plots the GPS coordinates onto an internal heatmap in the Admin Console. If a cluster of "High Severity" reports appears in a single geographical zone, the system flags it as an "Epidemic Zone."
+  </Accordion>
+  <Accordion title="Backend Security: Automated Alert Triggering" icon="server">
+    **Under the Hood:** If a severe disease (like Coffee Berry Disease) is reported and verified, the backend can trigger an automated SMS/Push notification broadcast to all other registered farmer devices within a 10km radius of the infected GPS pin, warning them to apply preventative sprays.
+  </Accordion>
+</AccordionGroup>
+
+<div align="center">
+  <img src="/images/pest-success-message.jpeg" alt="Pest Report Thank You Screen" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
+
+---
+
+## 3. Agronomist Follow-Up
+
+Your report does not go into a void; it initiates a direct support workflow.
+
+<Steps>
+  <Step title="Report Status">
+    You can view all your past submissions in the **Report History** tab to track recurring seasonal issues on your farm.
+  </Step>
+  <Step title="Direct Contact">
+    If you selected a **High** or **Extreme** severity, the system automatically opens a ticket with the Sasini extension officers. They will review your uploaded photos and either call your registered alternative number or dispatch an officer to your GPS pin to deliver the necessary Agri Shop chemicals.
+  </Step>
+</Steps>
+
+<Info>
+  **Community Impact:** Even if the severity is "Low", reporting it helps Sasini predict next season's required inventory for the Agri Shop. Your data ensures we always have the right medicines in stock for everyone!
+</Info>
