@@ -47,7 +47,7 @@ Just like you wouldn't let a stranger walk into your tea or coffee farm, we don'
 
 <Steps>
   <Step title="Input Farmer ID">
-    You will be asked to type in your unique **Sasini Farmer ID**. Think of this ID as your digital title deed—it connects your app directly to your real-world farm records at the factory.
+    You will be asked to type in your unique **Sasini Farmer ID**, **National ID**, and **Phone Number**. Think of this ID as your digital title deed—it connects your app directly to your real-world farm records at the factory.
 
     <Accordion title="Backend Security: Parameterized Query Execution" icon="server">
       **What happens under the hood:** To absolutely prevent SQL Injection, the backend sanitizes the Farmer ID using parameterized queries. It strips the input of executable code before querying the encrypted database. Invalid IDs throw a generic `Validation Failed` error to give hackers zero clues about our structure.
