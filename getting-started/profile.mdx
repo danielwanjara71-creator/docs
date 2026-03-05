@@ -1,21 +1,37 @@
 ---
-title: 'Registration & Onboarding'
-description: 'A comprehensive breakdown of the Sasini App registration pipeline, including Farmer Validation and Multi-Factor Authentication (MFA).'
+title: 'Authentication & Onboarding'
 icon: 'shield-check'
 ---
 
-To ensure a highly secure and customized experience, the Sasini App utilizes a multi-step registration pipeline. This process verifies that every user is a legitimate member of the Sasini ecosystem while securing their account with industry-standard cryptography.
+<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
+  A comprehensive breakdown of the Sasini App identity pipeline. Discover our Farmer Validation, Login Authentication, and the military-grade backend security protocols protecting your farm's data.
+</p>
 
-## 1. Localization & Language Selection
+To ensure a highly secure and customized experience, the Sasini App utilizes a strict, multi-step identity pipeline. Whether you are registering for the first time or logging into an existing session, this process verifies that every user is a legitimate member of the Sasini ecosystem. Our systems operate on a **Zero-Trust Architecture**, actively monitored and fortified against intrusion to ensure your financial and agricultural data is permanently protected.
+
+---
+
+## Phase 1: Registration & Onboarding
+
+### 1. Localization & Language Selection
 
 Because the Sasini ecosystem spans diverse demographics, the very first step of the journey is localization.
 
 <Steps>
   <Step title="Launch the Application">
     Upon opening the app for the first time, users are presented with a welcome screen to configure their preferred language.
+    
+    <Accordion title="Backend Security: Zero-Trust Handshake" icon="server">
+      **What happens under the hood:** The moment the app launches, it initiates a secure "handshake" with the Sasini servers. We assume every connection is potentially hostile until proven otherwise. The backend instantly scans the connection for SSL/TLS 1.3 encryption certificates to ensure the network hasn't been compromised before allowing the app to load.
+    </Accordion>
   </Step>
+  
   <Step title="Select Preferred Language">
     Users can choose between **English**, **Swahili**, **French**, or **German**. This selection immediately updates the entire app interface.
+    
+    <Accordion title="Backend Security: Secure State Initialization" icon="server">
+      **What happens under the hood:** When a language is selected, the backend does not just switch text; it generates a secure, localized environment state. This preference is saved in an encrypted, tamper-proof local storage container on the device. This ensures malicious actors cannot inject foreign scripts or XSS (Cross-Site Scripting) attacks through manipulated language files.
+    </Accordion>
     
     <div align="center">
       <img src="/images/language-selection.jpeg" alt="Language Selection Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
@@ -23,37 +39,53 @@ Because the Sasini ecosystem spans diverse demographics, the very first step of 
   </Step>
 </Steps>
 
-## 2. Farmer Validation Protocol
+### 2. Farmer Validation Protocol
 
 Before a new profile can be created, the system must verify that the user is an officially recognized Sasini farmer.
 
-<Accordion title="How Backend Validation Works" icon="server">
-  When the user inputs their Farmer ID, the frontend securely communicates with the **Easyway Web API**. 
-  
-  The system queries the central Sasini database. 
-  * **If Invalid:** The system instantly throws an error message (`Validation Failed: Farmer not found`), preventing unauthorized account creation.
-  * **If Valid:** The system retrieves the farmer's base details and allows them to proceed to the secure account creation phase.
-</Accordion>
+<Steps>
+  <Step title="Input Farmer ID">
+    The user inputs their unique Sasini Farmer ID into the system.
+
+    <Accordion title="Backend Security: Parameterized Query Execution" icon="server">
+      **What happens under the hood:** To absolutely prevent SQL Injection (a common hacking technique), the backend sanitizes the Farmer ID using parameterized queries. The Easyway Web API strips the input of any executable code before querying the encrypted Sasini database. If the ID is invalid, it throws a generic `Validation Failed` error—intentionally giving hackers zero clues about our database structure.
+    </Accordion>
+  </Step>
+
+  <Step title="System Verification">
+    If valid, the system retrieves the farmer's base details and allows them to proceed to the secure account creation phase.
+
+    <Accordion title="Backend Security: Anti-Brute Force Rate Limiting" icon="server">
+      **What happens under the hood:** Hackers often use automated "bots" to guess thousands of IDs per second. The Sasini backend employs strict **Rate Limiting**. If a device attempts to enter an invalid ID too many times within a specific window, the backend's firewall automatically and permanently blacklists their IP address, instantly stopping brute-force and DDoS attacks.
+    </Accordion>
+  </Step>
+</Steps>
 
 <div align="center">
   <img src="/images/farmer-validation.jpeg" alt="Farmer ID Validation Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
 
-## 3. Account Creation & MFA Setup
+### 3. Account Creation & MFA Setup
 
-Once validated, the user must secure their account using our Multi-Factor Authentication (MFA) parameters.
+Once validated, the user must secure their account using our rigorous Multi-Factor Authentication (MFA) parameters.
 
 <Steps>
   <Step title="Enter Credentials">
     The user inputs their **Email Address** and creates a secure **Password**.
+
+    <Accordion title="Backend Security: TLS 1.3 Payload Encryption" icon="server">
+      **What happens under the hood:** When the user taps "Submit", their password is NOT sent through the internet as plain text. It is immediately encrypted locally on the phone using the **TLS 1.3 protocol**. Even if a hacker intercepts the data over a compromised public Wi-Fi network, all they will see is an unbreakable string of randomized alphanumeric garbage.
+    </Accordion>
   </Step>
+  
   <Step title="Enforce Password Policies">
-    To protect financial and farm data, the system strictly enforces the following password complexities:
-    * At least one **uppercase letter**
-    * At least one **lowercase letter**
-    * At least one **number**
-    * At least one **special symbol** (e.g., @, #, $, !)
+    To protect financial and farm data, the system strictly enforces complex password rules.
+
+    <Accordion title="Backend Security: Cryptographic Password Hashing" icon="server">
+      **What happens under the hood:** Sasini **never** stores actual passwords. When the backend receives the password, it runs it through a state-of-the-art cryptographic hashing algorithm (with a unique mathematical "salt" for every user). This turns the password into a one-way hash. If a hacker somehow breached the database, they would only find useless hashes, making account takeovers mathematically impossible.
+    </Accordion>
   </Step>
+  
   <Step title="Legal Agreements">
     The user must explicitly check the boxes confirming they have read and agree to the **Terms of Use** and **Privacy Policy**.
     
@@ -63,24 +95,97 @@ Once validated, the user must secure their account using our Multi-Factor Authen
   </Step>
 </Steps>
 
-## 4. Email Link Verification (MFA)
+### 4. Email Link Verification
 
 To prevent fraudulent accounts, Sasini enforces a strict email verification loop.
 
-1. **Verification Dispatched:** Upon submitting their password, a secure verification link is immediately sent to the user's registered email address.
-2. **Action Required:** The user must open their email client and click the secure link to confirm ownership of the address.
-3. **Resend Protocol:** If the email does not arrive, the user must wait **60 seconds** before the system allows them to trigger a new verification link.
+<Steps>
+  <Step title="Dispatch Verification">
+    A secure verification link is immediately sent to the user's registered email address.
+
+    <Accordion title="Backend Security: CSPRNG Token Generation" icon="server">
+      **What happens under the hood:** The backend generates a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) token. This token is tied directly to the user's IP address, device, and a strict countdown timer. It is mathematically unguessable, meaning no hacker can forge a verification link.
+    </Accordion>
+  </Step>
+  
+  <Step title="Action Required">
+    The user must open their email client and click the secure link to confirm ownership.
+
+    <Accordion title="Backend Security: Anti-Phishing Link Validation" icon="server">
+      **What happens under the hood:** When the link is clicked, the backend verifies the exact signature of the token. The system is designed to instantly invalidate the token after a single click, completely neutralizing any "Replay Attacks" where a hacker tries to reuse an old verification link.
+    </Accordion>
+  </Step>
+</Steps>
+
+---
+
+## Phase 2: Login & Authentication
+
+For existing users, accessing the platform is streamlined but heavily fortified.
+
+### 1. Credential Submission
+
+Returning users simply enter their registered Email Address and Password to access their dashboard.
+
+<Steps>
+  <Step title="Enter Login Details">
+    The user inputs their email and password into the login portal.
+    
+    <Accordion title="Backend Security: Input Sanitization & Traversal Defense" icon="server">
+      **What happens under the hood:** As soon as the login button is pressed, the backend strips the input fields of any hidden characters, JavaScript payloads, or command-line syntax. This completely eliminates the threat of NoSQL injections, ensuring hackers cannot manipulate the login fields to bypass authentication.
+    </Accordion>
+  </Step>
+  <Step title="Submit Authentication Request">
+    The app securely transmits the login request to the Easyway Web API.
+    
+    <Accordion title="Backend Security: Constant-Time Hash Comparison" icon="server">
+      **What happens under the hood:** The backend retrieves the user's "hashed" password from the database. It then applies the exact same cryptographic hashing algorithm to the newly typed password and compares the two hashes. To prevent "Timing Attacks" (where hackers measure server response times to guess passwords), the server uses a constant-time comparison algorithm, taking the exact same microsecond to respond whether the password is right or wrong.
+    </Accordion>
+  </Step>
+</Steps>
 
 <div align="center">
-  <img src="/images/email-verification.jpeg" alt="Email Verification Prompt" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+  <img src="/images/login-screen.jpeg" alt="Sasini App Login Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
 
-## 5. Profile Finalization & Dashboard
+### 2. Contextual Risk Analysis
 
-Once the email link is clicked and verified, the backend finalizes the registration. 
+Before granting access, the system evaluates the context of the login attempt to ensure it is the real user.
 
-The user's secure profile is saved, their Unique Digital ID is permanently linked to their email, and the app automatically fetches their customized data. The user is then safely navigated to their main **Dashboard**, ready to explore the app!
+<Steps>
+  <Step title="Evaluate Login Context">
+    The system checks where the login is coming from.
+    
+    <Accordion title="Backend Security: Heuristic Threat Modeling" icon="server">
+      **What happens under the hood:** The backend analyzes the login metadata. It checks the device fingerprint, the IP address location, and the login velocity. For example, if a farmer logs in successfully from Nairobi, Kenya, and then 10 minutes later a login attempt occurs from a server in Eastern Europe, the backend's heuristic engine instantly flags it as impossible, blocks the foreign IP, and temporarily locks the account.
+    </Accordion>
+  </Step>
+  <Step title="Manage Failed Attempts">
+    If the user types the wrong password, the system carefully manages the failure.
+    
+    <Accordion title="Backend Security: Exponential Backoff Protocol" icon="server">
+      **What happens under the hood:** To defeat "Credential Stuffing" (where hackers use lists of stolen passwords from other websites), the backend uses Exponential Backoff. After 3 failed login attempts, the server introduces a time delay. After 5 attempts, the account is temporarily locked, requiring an email reset. 
+    </Accordion>
+  </Step>
+</Steps>
 
-<div align="center">
-  <img src="/images/main-dashboard.jpeg" alt="Sasini App Main Dashboard" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
-</div>
+### 3. Session Issuance & Dashboard Entry
+
+Once the credentials and context are verified, the user is granted access to the system.
+
+<Steps>
+  <Step title="Issue Secure Session">
+    The backend authorizes the device and generates a secure session.
+    
+    <Accordion title="Backend Security: Short-Lived JWT & Device Binding" icon="server">
+      **What happens under the hood:** The server issues a highly secure JSON Web Token (JWT). This token acts as a digital, temporary passport required for every action the user takes. It is strictly bound to the user's specific device fingerprint. Furthermore, the token is "Short-Lived"—it automatically expires in the background and is silently refreshed. This means even if a highly sophisticated hacker managed to steal the session data, the token would be useless to them within minutes.
+    </Accordion>
+  </Step>
+  <Step title="Access Granted">
+    The user is routed securely to their personalized dashboard, and an immutable log of the login is recorded for audit purposes.
+    
+    <Accordion title="Backend Security: Immutable Access Logging" icon="server">
+      **What happens under the hood:** The successful login triggers an automated log in our deep backend vault. This system records the time, IP, and device of the successful login in a write-only database. This provides complete traceability and ensures total transparency for the lifetime of the farmer's account, guaranteeing absolute data integrity.
+    </Accordion>
+  </Step>
+</Steps>
