@@ -20,9 +20,17 @@ The Agri Shop is organized into clean, easy-to-navigate tabs so you can find exa
     * **Sasini Retail (Coming Soon):** Exclusive access to finished Sasini consumer products.
   </Step>
 
+<div align="center">
+  <img src="/images/tabs.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
+
   <Step title="Select and Calculate">
     Tap on any item to view its details, price, and application instructions. Use the **(+)** and **(-)** buttons to adjust the quantity. The app instantly calculates your total estimated cost on the screen.
   </Step>
+
+<div align="center">
+  <img src="/images/select.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
 
   <Step title="Add to Cart">
     Tap the **Add to Cart** button. A brief success message will appear, confirming the item is queued for checkout.
@@ -41,9 +49,10 @@ The Agri Shop is organized into clean, easy-to-navigate tabs so you can find exa
   <img src="/images/agri-shop-tabs.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
 </div>
 
-<Tip>
-  **Pro Tip:** Always check the 'Fertilizer' tab a few weeks before the rainy season begins. Sasini occasionally offers subsidized rates for early-bird input orders!
-</Tip>
+<Note>
+  **Resilience:** Cart data is not just stored locally. It is serialized and pushed to a secure Redis cache on the backend. This means if a farmer's phone battery dies halfway through shopping, their cart is perfectly preserved upon their next login.
+</Note>
+
 
 ---
 
@@ -66,7 +75,7 @@ Once you have gathered everything you need, it's time to submit your request to 
     Tap **Submit Order**. 
     1. The app will emit a clear **Success Beep Tone**.
     2. A green confirmation popup will appear on your screen.
-    3. A unique **Order ID** (e.g., `ORD-8492-X`) is generated instantly.
+    3. A unique **Order ID** (e.g., `OD-***849***`) is generated instantly and also sent to your notifications page under **Orders** Tab.
   </Step>
 </Steps>
 
