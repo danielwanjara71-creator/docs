@@ -1,0 +1,98 @@
+---
+title: 'Profile, Support & Settings'
+icon: 'user-gear'
+---
+
+<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
+  Take full control of your Sasini experience. Manage your account, adjust your settings, access deep educational resources, and get help exactly when you need it.
+</p>
+
+We believe in complete transparency and user control. Your Profile & Settings hub is where you customize the app to fit your specific needs, while our comprehensive Support module ensures you are never alone on your farming journey.
+
+---
+
+## 1. Account Management & Settings
+
+Navigate to your **Profile** tab to manage your core identity within the Sasini ecosystem.
+
+<Steps>
+  <Step title="Personalize Your Profile">
+    Update your contact details, view your farm registration metrics, and change your password securely.
+  </Step>
+  <Step title="Accessibility & Language">
+    Change the app's language (e.g., English to Swahili) to ensure you fully understand all instructions and contracts.
+  </Step>
+  <Step title="Explore Extra Features">
+    Access exclusive modules like **Farmer Training Content** for video tutorials, learn about **Partnerships with Sasini**, or browse our **E-commerce** section to buy finished Sasini retail products.
+  </Step>
+  <Step title="Account Security">
+    You have the ultimate power to **Log Out** to protect your session, or permanently **Deactivate Account** if you are no longer farming.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Warning>
+  **Deactivation Warning:** Deactivating your account will instantly sever your access to the app and digital payment tracking. Any pending deliveries will still be processed manually at the factory, but you will lose digital visibility.
+</Warning>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: JWT Token Revocation" icon="server">
+    **Under the Hood:** When a user taps 'Log Out', the frontend destroys the local cache, and the backend instantly blacklists their current JSON Web Token (JWT). Even if a malicious actor intercepts the old token, the server will reject it.
+  </Accordion>
+  <Accordion title="Backend Security: Soft Delete vs. Hard Delete" icon="server">
+    **Under the Hood:** "Deactivating" an account performs a *Soft Delete*. The user's status flag in the database is switched to `inactive`, denying them login access. However, their historical ledger data is preserved for Sasini's legal and financial compliance audits.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 2. Notifications Center
+
+Never miss a beat. The dedicated **Notifications** page organizes all your incoming alerts into clean, manageable tabs.
+
+* **Orders:** Updates on your Agri Shop inputs (Pending, Processing, Delivered).
+* **Pickups:** Tracking for your summoned logistics trucks.
+* **Deliveries & Payments:** Receipts for your weighed produce and incoming bank deposits.
+* **Alerts:** General system and agronomy warnings.
+
+<div style={{ height: '20px' }} />
+
+<Tip>
+  **Stay Informed:** Ensure your phone's native Operating System settings allow Push Notifications for the Sasini App so you get these alerts even when the app is closed!
+</Tip>
+
+---
+
+## 3. Help, Support & Feedback
+
+If the Sasini AI can't solve your problem, our human team is ready to step in.
+
+<Steps>
+  <Step title="Help Center & Socials">
+    Browse our extensive **FAQs**, find direct factory contact details, or connect with us on our official platforms: Instagram, Facebook, X (Twitter), LinkedIn, and YouTube.
+  </Step>
+  <Step title="Submit In-App Feedback">
+    Your voice builds this app. Use our incredibly detailed feedback form:
+    * Rate your experience out of **5 Stars**.
+    * Select exactly what you liked using quick **Choice Chips** (e.g., *Speed*, *Design*, *Logistics*).
+    * Leave a written review explaining your experience.
+    * Give us an **NPS Score** (1-10) on how likely you are to recommend the app to a neighbor.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Info>
+  **App Store Ratings:** If you love the app, you will also find a link to rate us on the Google Play Store or Apple App Store. Good reviews help other farmers discover the platform!
+</Info>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: NPS Data Aggregation" icon="server">
+    **Under the Hood:** The feedback form isn't just an email. The 1-10 recommendation scores are instantly aggregated in the admin dashboard to calculate the app's real-time Net Promoter Score (NPS). The choice chips act as queryable tags, allowing devs to see exactly which features users love most.
+  </Accordion>
+</AccordionGroup>
