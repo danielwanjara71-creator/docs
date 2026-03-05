@@ -117,6 +117,32 @@ To prevent fraudulent accounts, Sasini enforces a strict email verification loop
   </Step>
 </Steps>
 
+## 5. Profile Finalization & Dashboard
+
+Once the email link is clicked and verified, the backend finalizes the registration. 
+
+<Steps>
+  <Step title="Finalize Registration">
+    The user's secure profile is saved, their Unique Digital ID is permanently linked to their email, and the app automatically fetches their customized data. 
+
+    <Accordion title="Backend Security: JWT Session Issuance" icon="server">
+      **What happens under the hood:** Upon successful verification, the server issues a secure **JSON Web Token (JWT)**. This token acts as a highly secure digital passport that is required for every single action the user takes moving forward. The token rotates securely, meaning even if a session is hijacked, it becomes useless within minutes, automatically locking out unauthorized users.
+    </Accordion>
+  </Step>
+
+  <Step title="Enter the Dashboard">
+    The user is then safely navigated to their main **Dashboard**, ready to explore the app!
+
+    <Accordion title="Backend Security: Immutable Audit Logging" icon="server">
+      **What happens under the hood:** The final step of registration triggers an automated, immutable log in our deep backend. The system records the successful secure registration in a write-only database vault. This provides complete traceability and ensures total transparency and security monitoring for the lifetime of the farmer's account.
+    </Accordion>
+  </Step>
+</Steps>
+
+<div align="center">
+  <img src="/images/main-dashboard.jpeg" alt="Sasini App Main Dashboard" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
 ---
 
 ## Phase 2: Login & Authentication
