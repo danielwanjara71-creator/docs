@@ -41,7 +41,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Farmer Guide",
+        "tab": "System Users",
         "groups": [
           {
             "group": "System Overview",
@@ -85,45 +85,6 @@
               "support/notifications",
               "support/help-center",
               "resources/externals"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Admin Console",
-        "groups": [
-          {
-            "group": "Platform Management",
-            "pages": [
-              "admin/overview",
-              "admin/user-management",
-              "admin/logistics-tracking"
-            ]
-          },
-          {
-            "group": "Communication & Alerts",
-            "pages": [
-              "admin/content-management",
-              "admin/broadcasting"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Developer API",
-        "groups": [
-          {
-            "group": "Architecture & Security",
-            "pages": [
-              "architecture/security",
-              "architecture/integrations"
-            ]
-          },
-          {
-            "group": "Easyway Web API",
-            "pages": [
-              "api-reference/authentication",
-              "api-reference/endpoints"
             ]
           }
         ]
