@@ -3,10 +3,6 @@ title: 'Pest & Disease Reporting'
 icon: 'bug'
 ---
 
-<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
-  Protect your yield and your neighbors. Use the Pest Reporting tool to instantly alert Sasini agronomists about outbreaks, request targeted assistance, and map disease spread.
-</p>
-
 Agricultural threats spread rapidly. The Pest & Disease Reporting page is a vital community tool. By reporting anomalies on your farm early, you accomplish two things: First, you alert the Sasini extension officers who can provide you with targeted chemical treatments. Second, you help map outbreaks, allowing the factory to warn neighboring farmers before the pests reach their crops.
 
 ---
@@ -17,12 +13,12 @@ To give our agronomists the best chance of diagnosing the issue remotely, the re
 
 <Steps>
   <Step title="Open the Reporting Tool">
-    Navigate to the **Pest & Disease** page and tap **Report New Outbreak**.
+    Navigate to the **Pest Reports** page to report a new pest outbreak.
   </Step>
 
   <Step title="Select the Affected Crop & Location">
     * **Crop Affected:** Choose the specific crop line currently under attack (e.g., Tea, Coffee, Macadamia).
-    * **Location:** Confirm if the outbreak is at your main registered farm, or drop a GPS pin if it is at a secondary plot.
+    * **Location:** Confirm if the outbreak is at your main registered farm, or secondary plot by entering the specific location.
   </Step>
 
   <Step title="Categorize the Threat">
@@ -32,7 +28,7 @@ To give our agronomists the best chance of diagnosing the issue remotely, the re
 </Steps>
 
 <div align="center">
-  <img src="/images/pest-form-details.jpeg" alt="Pest and Disease Input Form" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/pests.jpeg" alt="Pest and Disease Input Form" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <Tip>
@@ -47,27 +43,23 @@ Agronomists cannot prescribe chemical treatments without visual confirmation of 
 
 <Steps>
   <Step title="Upload Proof">
-    Tap the **Camera Icon** and take a clear, close-up photograph of the affected leaf, stem, or pest. *The system will not allow you to submit a report without an image.*
+    Tap the **Camera Icon** and take a clear, close-up photograph of the affected leaf, stem, etc pest or upload from gallery. *The system will not allow you to submit a report without an image.*
   </Step>
 
   <Step title="Submit the Report">
-    Tap **Submit Report**. 
+    Tap **Submit Pest Report**. 
     1. A **Thank You** message will appear on screen, acknowledging your help in protecting the farming community.
     2. The report is instantly transmitted to the Sasini agricultural desk.
   </Step>
 </Steps>
 
-<AccordionGroup>
-  <Accordion title="Backend Security: Epidemiological Data Aggregation" icon="server">
-    **Under the Hood:** When a report is submitted, the backend strips personal identifiers and plots the GPS coordinates onto an internal heatmap in the Admin Console. If a cluster of "High Severity" reports appears in a single geographical zone, the system flags it as an "Epidemic Zone."
-  </Accordion>
+
   <Accordion title="Backend Security: Automated Alert Triggering" icon="server">
     **Under the Hood:** If a severe disease (like Coffee Berry Disease) is reported and verified, the backend can trigger an automated SMS/Push notification broadcast to all other registered farmer devices within a 10km radius of the infected GPS pin, warning them to apply preventative sprays.
   </Accordion>
-</AccordionGroup>
 
 <div align="center">
-  <img src="/images/pest-success-message.jpeg" alt="Pest Report Thank You Screen" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/pest-successp.jpeg" alt="Pest Report Thank You Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 ---
