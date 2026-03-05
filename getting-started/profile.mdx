@@ -4,12 +4,10 @@ icon: 'shield-check'
 ---
 
 <p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
-  A comprehensive guide to the Sasini App identity pipeline. Discover how we validate farmers, our strict login rules, and the military-grade backend protocols protecting your harvest records and payments from creation to deactivation.
+  A comprehensive guide to the Sasini App identity pipeline. Discover our Farmer Validation protocols, strict authentication rules, and the enterprise-grade backend security protecting your agricultural and financial data.
 </p>
 
-Welcome to the Sasini App! We know that your farm is your business, and your harvest records and payment details are highly sensitive. Just as you would protect your physical storehouse with a strong lock, the Sasini App uses a highly secure, multi-step process to protect your digital account. 
-
-Whether you are registering for the first time, logging in, or changing your password, this process verifies that *you* are the only person accessing your hard-earned money and farm data. Our systems operate on a **Zero-Trust Architecture**, meaning we actively block any suspicious activity to keep your livelihood permanently protected.
+To ensure a highly secure and customized experience, the Sasini App utilizes a strict, multi-step identity pipeline. Whether you are registering for the first time, establishing a new session, or updating your credentials, our systems operate on a **Zero-Trust Architecture**. This infrastructure actively monitors for anomalies and requires explicit verification at every stage to guarantee that your harvest records and financial payouts remain permanently protected.
 
 ---
 
@@ -17,11 +15,11 @@ Whether you are registering for the first time, logging in, or changing your pas
 
 ### 1. Localization & Language Selection
 
-Farming happens across many regions and communities. We want you to feel completely at home when using the app, so the very first step is choosing the language you are most comfortable reading.
+The Sasini ecosystem operates across diverse demographics. To ensure accurate data entry and seamless navigation, the onboarding process begins with interface localization.
 
 <Steps>
   <Step title="Launch the Application">
-    Upon opening the app for the first time, you will be greeted with a welcome screen to set up your app.
+    Upon opening the application, users are presented with a welcome screen to configure their preferred language.
     
     <Accordion title="Backend Security: Zero-Trust Handshake" icon="server">
       **What happens under the hood:** The moment the app launches, it initiates a secure "handshake" with the Sasini servers. We assume every connection is potentially hostile. The backend instantly scans the connection for SSL/TLS 1.3 encryption certificates to ensure the network hasn't been compromised before allowing the app to load.
@@ -29,7 +27,7 @@ Farming happens across many regions and communities. We want you to feel complet
   </Step>
   
   <Step title="Select Preferred Language">
-    You can choose between **English**, **Swahili**, **French**, or **German**. Tapping your choice immediately translates all the buttons, menus, and instructions in the app so you can navigate with ease.
+    Users must select between **English**, **Swahili**, **French**, or **German**. This selection executes a global state update, translating all UI components and instructions.
     
     <Accordion title="Backend Security: Secure State Initialization" icon="server">
       **What happens under the hood:** When a language is selected, the backend generates a secure, localized environment state saved in an encrypted, tamper-proof local storage container. This ensures malicious actors cannot inject foreign scripts or XSS attacks through manipulated language files.
@@ -41,13 +39,17 @@ Farming happens across many regions and communities. We want you to feel complet
   </Step>
 </Steps>
 
+<Tip>
+  **Post-Registration Adjustments:** If you select the wrong language during onboarding, you can always update your localization preferences later from the primary Settings menu.
+</Tip>
+
 ### 2. Farmer Validation Protocol
 
-Just like you wouldn't let a stranger walk into your tea or coffee farm, we don't let strangers into the app. Before you can create an account, we must verify that you are an officially registered Sasini farmer.
+Account creation is strictly limited to authorized personnel. Before establishing a profile, the system must verify the user against the central Sasini factory database.
 
 <Steps>
   <Step title="Input Farmer ID">
-    You will be asked to type in your unique **Sasini Farmer ID**, **National ID**, and **Phone Number**. Think of this ID as your digital title deed—it connects your app directly to your real-world farm records at the factory.
+    The user is required to input their officially registered **Sasini Farmer ID**. This establishes the crucial link between the digital account and real-world delivery records.
 
     <Accordion title="Backend Security: Parameterized Query Execution" icon="server">
       **What happens under the hood:** To absolutely prevent SQL Injection, the backend sanitizes the Farmer ID using parameterized queries. It strips the input of executable code before querying the encrypted database. Invalid IDs throw a generic `Validation Failed` error to give hackers zero clues about our structure.
@@ -55,7 +57,7 @@ Just like you wouldn't let a stranger walk into your tea or coffee farm, we don'
   </Step>
 
   <Step title="System Verification">
-    The app will check our central factory database. If the ID is typed incorrectly or doesn't exist, the app will gently let you know so you can try again. If it is valid, the app instantly recognizes you and allows you to move to the next step to set up your security details.
+    The Easyway Web API queries the central database. If verified, the app retrieves the farmer's foundational profile data and authorizes progression to the security setup phase. If invalid, the process is securely halted.
 
     <Accordion title="Backend Security: Anti-Brute Force Rate Limiting" icon="server">
       **What happens under the hood:** Hackers use automated "bots" to guess IDs. The Sasini backend employs strict **Rate Limiting**. If a device attempts too many invalid IDs, the backend's firewall permanently blacklists their IP address, stopping brute-force attacks instantly.
@@ -63,13 +65,21 @@ Just like you wouldn't let a stranger walk into your tea or coffee farm, we don'
   </Step>
 </Steps>
 
+<div align="center">
+  <img src="/images/farmer-validation.jpeg" alt="Farmer ID Validation Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+<Tip>
+  **Locating Your ID:** Your official Farmer ID is printed on your physical delivery receipts and factory registration documents. If you have misplaced it, please contact your local Sasini extension officer.
+</Tip>
+
 ### 3. Account Creation & MFA Setup
 
-Now that we know who you are, it's time to build a strong lock for your account. We use Multi-Factor Authentication (MFA), which is just a technical way of saying we double-check your identity to keep hackers out.
+Following validation, the user must secure their digital identity using Multi-Factor Authentication (MFA) parameters.
 
 <Steps>
   <Step title="Enter Credentials">
-    You will need to type in your personal **Email Address** and create a secret **Password**. You will use these two things every time you want to open the app in the future.
+    The user registers their primary **Email Address** and establishes a secure **Password** for future authentication.
 
     <Accordion title="Backend Security: TLS 1.3 Payload Encryption" icon="server">
       **What happens under the hood:** When the user taps "Submit", their password is NOT sent as plain text. It is encrypted locally on the phone. Even if intercepted over public Wi-Fi, it appears as an unbreakable string of randomized alphanumeric garbage.
@@ -77,11 +87,11 @@ Now that we know who you are, it's time to build a strong lock for your account.
   </Step>
   
   <Step title="Enforce Password Policies">
-    A simple password like "1234" is like putting a cheap, easily broken lock on your storehouse. To protect your financial payouts, we require a heavy-duty lock. Your password must include:
-    * At least one **Capital Letter** (like A, B, C)
-    * At least one **Small Letter** (like a, b, c)
-    * At least one **Number** (like 1, 2, 3)
-    * At least one **Special Symbol** (like @, #, $, !)
+    To protect sensitive financial ledgers, the platform strictly enforces robust password complexity requirements. The password must contain:
+    * At least one **uppercase letter**
+    * At least one **lowercase letter**
+    * At least one **number**
+    * At least one **special symbol** (e.g., @, #, $, !)
 
     <Accordion title="Backend Security: Cryptographic Password Hashing" icon="server">
       **What happens under the hood:** Sasini **never** stores actual passwords. The backend runs the password through a cryptographic hashing algorithm with a unique mathematical "salt". This turns the password into a one-way hash, making database breaches useless to attackers.
@@ -89,55 +99,67 @@ Now that we know who you are, it's time to build a strong lock for your account.
   </Step>
 
   <Step title="Legal Agreements">
-    Finally, simply tick the boxes to confirm you have read our **Terms of Use** and **Privacy Policy**. This is our promise to you about how we handle your farm's data safely.
+    Users must formally acknowledge and accept the **Terms of Use** and **Privacy Policy** to proceed.
   </Step>
 </Steps>
 
+<div align="center">
+  <img src="/images/registration-details.jpeg" alt="Registration Details Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
 <Tip>
-  **Advice for Farmers:** We highly recommend creating a password using farming words you can easily remember, combined with numbers and symbols. For example: `Green#Coffee!Harvest99`. Never write this password down where others can see it, and do not share it with farm workers.
+  **Credential Security:** Avoid using easily guessable information such as your name or birth year. For optimal security, consider using a dedicated Password Manager application to generate and store your credentials.
 </Tip>
 
 ### 4. Email Link Verification
 
-Before we finalize everything, we need to make sure the email address you gave us actually belongs to you, and that no one made a spelling mistake. This ensures we can always reach you securely if there's ever an issue with your account.
+To eliminate fraudulent registrations and guarantee secure communication channels, the platform mandates a rigorous email verification loop.
 
 <Steps>
-  <Step title="Check Your Inbox">
-    The moment you submit your details, the Sasini system instantly sends a private, secure message directly to your email inbox.
+  <Step title="Dispatch Verification">
+    Upon submitting the registration payload, the server dispatches a secure, time-sensitive verification link to the registered email address.
 
     <Accordion title="Backend Security: CSPRNG Token Generation" icon="server">
       **What happens under the hood:** The backend generates a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) token tied to the user's IP, device, and a strict timer. It is mathematically unguessable.
     </Accordion>
   </Step>
   
-  <Step title="Click the Secure Link">
-    Simply press the home button on your phone, open your email app (like Gmail or Yahoo), look for the "Welcome to Sasini" email, and click the verification button inside it. This proves to us that you own the email.
+  <Step title="Action Required">
+    The user must navigate to their email client and click the embedded secure link. This verifies cryptographic ownership of the designated address.
 
     <Accordion title="Backend Security: Anti-Phishing Link Validation" icon="server">
       **What happens under the hood:** The system instantly invalidates the token after a single click, completely neutralizing "Replay Attacks" where a hacker tries to reuse an old link.
     </Accordion>
   </Step>
 
-  <Step title="Didn't get the email?">
-    Sometimes network delays happen. If the email doesn't arrive right away, wait **60 seconds**, and the app will let you press a button to send a new one.
+  <Step title="Resend Protocol">
+    To prevent server spamming, if the email is not received immediately, the system enforces a mandatory **60-second cooldown** before a new verification payload can be requested.
   </Step>
 </Steps>
 
+<div align="center">
+  <img src="/images/email-verification.jpeg" alt="Email Verification Prompt" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
+</div>
+
+<Tip>
+  **Troubleshooting:** If you do not see the verification email in your primary inbox, please ensure you check your 'Spam' or 'Junk' folders, as strict security emails are occasionally filtered by providers like Gmail or Yahoo.
+</Tip>
+
 ## 5. Profile Finalization & Dashboard
 
-You are all set! Once you click that email link, the Sasini app does the heavy lifting in the background to prepare your digital workspace.
+Upon successful token verification, the backend commits the registration data and provisions the user's secure environment.
 
 <Steps>
-  <Step title="Loading Your Farm Data">
-    Your account is officially created. The app will securely connect to the factory servers and gather all your customized information—like your past tea or coffee deliveries, current harvest weights, and payment history.
+  <Step title="Data Synchronization">
+    The user's Unique Digital ID is finalized, and the application securely syncs historical harvest data, delivery logs, and payment ledgers from the factory servers.
 
     <Accordion title="Backend Security: JWT Session Issuance" icon="server">
       **What happens under the hood:** Upon successful verification, the server issues a secure **JSON Web Token (JWT)**. This token acts as a highly secure digital passport that is required for every single action the user takes moving forward. The token rotates securely, meaning even if a session is hijacked, it becomes useless within minutes, automatically locking out unauthorized users.
     </Accordion>
   </Step>
 
-  <Step title="Welcome to the Dashboard">
-    You will automatically be taken to your main **Dashboard**. This is your personal control center where you can view all your farm's operations clearly and easily!
+  <Step title="Enter the Dashboard">
+    The user is routed directly to the main **Dashboard**, finalizing the onboarding sequence.
 
     <Accordion title="Backend Security: Immutable Audit Logging" icon="server">
       **What happens under the hood:** The final step of registration triggers an automated, immutable log in our deep backend. The system records the successful secure registration in a write-only database vault. This provides complete traceability and ensures total transparency and security monitoring for the lifetime of the farmer's account.
@@ -153,13 +175,13 @@ You are all set! Once you click that email link, the Sasini app does the heavy l
 
 ## Phase 2: Login & Access
 
-When you return to the app on another day, getting back into your account is quick, but our security systems are still working hard in the background to make sure it's really you.
+Subsequent access to the platform requires strict authentication. While streamlined for the user, the backend executes complex risk analyses during every login attempt.
 
-### 1. Entering Your Details
+### 1. Credential Submission
 
 <Steps>
   <Step title="Sign In">
-    Just type in the Email Address and Password you created during registration, and tap the 'Sign In' button.
+    The user inputs their verified Email Address and Password into the authentication portal.
     
     <Accordion title="Backend Security: Constant-Time Hash Comparison" icon="server">
       **What happens under the hood:** The backend retrieves the hashed password and applies the same algorithm to the newly typed password. To prevent "Timing Attacks," the server uses a constant-time comparison, taking the exact same microsecond to respond whether the password is right or wrong.
@@ -171,20 +193,18 @@ When you return to the app on another day, getting back into your account is qui
   <img src="/images/login-screen.jpeg" alt="Sasini App Login Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
 
-### 2. Background Security Checks
-
-Before opening the doors to your dashboard, the app acts like a security guard at the factory gate, checking your "digital ID card."
+### 2. Contextual Risk Analysis
 
 <Steps>
-  <Step title="Location and Device Check">
-    The system silently checks if your phone and location make sense. For example, if you normally use the app from your farm in Kenya, but someone suddenly tries to log in using your email from a computer in Europe, the app knows this is a hacker and will instantly block them to protect your money.
+  <Step title="Evaluate Login Context">
+    The backend runs an immediate contextual evaluation, comparing the geographic location and device fingerprint against historical user patterns.
     
     <Accordion title="Backend Security: Heuristic Threat Modeling" icon="server">
       **What happens under the hood:** The backend analyzes device fingerprint and IP location. If a farmer logs in from Nairobi, and 10 minutes later a login attempt occurs from Eastern Europe, the heuristic engine flags it as impossible and blocks the foreign IP.
     </Accordion>
   </Step>
-  <Step title="Protecting Against Guessing">
-    If someone finds your phone and tries to guess your password, they won't get far. If the wrong password is typed too many times in a row, the app will temporarily lock the account. This ensures thieves cannot just sit there trying hundreds of passwords until they get lucky.
+  <Step title="Manage Failed Attempts">
+    Unsuccessful authentication attempts are strictly mitigated to prevent brute-force intrusion.
     
     <Accordion title="Backend Security: Exponential Backoff Protocol" icon="server">
       **What happens under the hood:** To defeat "Credential Stuffing" (where hackers use lists of stolen passwords from other websites), the backend uses Exponential Backoff. After 3 failed login attempts, the server introduces a time delay. After 5 attempts, the account is temporarily locked, requiring an email reset. 
@@ -192,11 +212,11 @@ Before opening the doors to your dashboard, the app acts like a security guard a
   </Step>
 </Steps>
 
-### 3. Entering the App
+### 3. Session Issuance 
 
 <Steps>
   <Step title="Access Granted">
-    Once the app is 100% sure it's you, it opens up your personalized dashboard where you can check your deliveries and payments.
+    Verified requests are issued a secure session token, and the user is granted access to the internal platform.
     
     <Accordion title="Backend Security: Short-Lived JWT & Device Binding" icon="server">
       **What happens under the hood:** The server issues a highly secure JSON Web Token (JWT). This token acts as a digital, temporary passport required for every action the user takes. It is strictly bound to the user's specific device fingerprint. Furthermore, the token is "Short-Lived"—it automatically expires in the background and is silently refreshed. This means even if a highly sophisticated hacker managed to steal the session data, the token would be useless to them within minutes.
@@ -211,15 +231,15 @@ Before opening the doors to your dashboard, the app acts like a security guard a
 
 ## Phase 3: Account Recovery & Settings
 
-Farming is demanding work. We know that sometimes phones get shared with family members, or passwords get forgotten during the busy harvest season. The Sasini App has easy, secure tools to help you manage your account safely.
+To accommodate device sharing and administrative updates, the Sasini App provides a comprehensive, highly secure credential management suite.
 
-### 1. Logging Out
+### 1. Session Termination (Logging Out)
 
-If you share your phone with anyone else, you should always "lock the door" when you are done checking your farm records. 
+Users are strongly encouraged to terminate their sessions when accessing the platform via shared hardware.
 
 <Steps>
-  <Step title="How to Log Out">
-    Go to your Profile or Settings menu and tap the **Log Out** button. A small pop-up message will ask, "Are you sure?" so you don't accidentally log out by pressing the wrong button. Once you confirm, your account is safely locked.
+  <Step title="Initiate Logout">
+    Navigate to the Settings profile and tap **Log Out**. The system will present a confirmation dialog to prevent accidental session termination.
   </Step>
 </Steps>
 
@@ -231,23 +251,27 @@ If you share your phone with anyone else, you should always "lock the door" when
   <img src="/images/logout-dialog.jpeg" alt="Logout Confirmation Dialog" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
 </div>
 
-### 2. Forgot Password (Account Recovery)
+<Tip>
+  **Device Management:** If you ever lose your mobile device, please contact Sasini Support immediately. Our administrators can manually revoke all active sessions remotely, securing your account instantly.
+</Tip>
 
-Did you forget your password? Don't worry, your farm data is completely safe. You can create a new password without losing any of your history.
+### 2. Account Recovery (Forgot Password)
+
+In the event of lost credentials, users can securely re-establish access without compromising historical data.
 
 <Steps>
-  <Step title="Ask for a Reset">
-    On the login screen, simply tap **Forgot Password** and type in your email address.
+  <Step title="Request Reset">
+    Select **Forgot Password** from the primary authentication screen and provide the registered email address.
   </Step>
-  <Step title="Check Your Email Fast">
-    We will immediately email you a special link to create a new password. For your security, this link is only valid for **15 minutes**. If you wait too long, you will need to ask for a new one.
+  <Step title="Secure Email Link">
+    The system dispatches a cryptographic reset link. To minimize the window of vulnerability, this link automatically expires in exactly **15 minutes**.
     
     <Accordion title="Backend Security: Anti-Enumeration & Signed URLs" icon="server">
       **What happens under the hood:** To prevent hackers from guessing which emails are registered, the backend will *always* say "If this email exists, a reset link has been sent," regardless of whether the email is valid. The link sent contains a securely signed URL payload that can only be decrypted by our servers.
     </Accordion>
   </Step>
-  <Step title="Type a New Password">
-    Click the link in your email, and the app will let you type a brand new, strong password. 
+  <Step title="Create New Credentials">
+    The user clicks the authorized link and submits a new password adhering to the platform's strict complexity parameters.
   </Step>
 </Steps>
 
@@ -255,35 +279,33 @@ Did you forget your password? Don't worry, your farm data is completely safe. Yo
   <img src="/images/forgot-password-page.jpeg" alt="Forgot Password Page" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
 
-### 3. The Strict "Change Password" Rule
+### 3. The Strict Re-authentication Loop
 
-If you *know* your password, but you want to change it just to be safe (maybe someone peeked over your shoulder), we use a **Strict Security Loop**. 
-
-Why is it so strict? Imagine you leave your phone unlocked on a table. A dishonest person could pick it up, go to settings, and change your password to lock you out of your own account! To prevent this, we force you to prove you are the real owner *before* we let you change the lock.
+When a user actively chooses to update their password from within the application, the system enforces a strict re-authentication loop. This architectural decision prevents unauthorized password modifications if an unlocked device is compromised.
 
 <Steps>
-  <Step title="Start the Change">
-    When you tap **Change Password** in your profile, the app will **immediately log you out**. Don't panic! This is on purpose.
+  <Step title="Initiate Change">
+    Upon selecting **Change Password** within the profile settings, the application deliberately and immediately terminates the active session.
   </Step>
-  <Step title="Prove It's You">
-    You must log back in using your *current* password. This proves that you (the real owner who knows the current password) are holding the phone.
+  <Step title="Re-Authenticate">
+    The user is routed to the login portal and must successfully authenticate using their *current* credentials, verifying physical ownership of the device.
   </Step>
-  <Step title="Security Check Passed">
-    Once you log in, the app will pop up a message saying: *"Identity Verified. Click Continue to change your password."*
+  <Step title="Identity Verification">
+    Following successful authentication, the system intercepts the standard routing and presents a verification dialog: *"Identity Verified. Click Continue to change your password."*
     
     <div align="center">
       <img src="/images/change-password-dialog.jpeg" alt="Identity Verified Dialog" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
-  <Step title="Type the New Password">
-    Now you can safely type your new, strong password. As soon as you hit save, **the app will log you out one more time**.
+  <Step title="Update & Auto-Logout">
+    The user inputs the new parameters. Upon successful submission, the system executes the update and **automatically terminates the session a second time**.
     
     <div align="center">
       <img src="/images/change-password-page.jpeg" alt="Enter New Password Page" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
-  <Step title="Final Login">
-    Log in with your *brand new* password. This helps you memorize it, and proves to the app that your new lock is working perfectly!
+  <Step title="Final Verification">
+    The user logs in with the newly established credentials, verifying database synchronization.
     
     <Accordion title="Backend Security: Cryptographic Salt Rotation" icon="server">
       **What happens under the hood:** When the password is changed, the backend doesn't just hash the new password; it generates a brand new cryptographic "Salt" (a random data string) and destroys the old one. It also instantly revokes all active sessions on any other devices, forcing anyone using the account to re-authenticate immediately.
@@ -295,27 +317,31 @@ Why is it so strict? Imagine you leave your phone unlocked on a table. A dishone
   <img src="/images/change-password-flow.jpeg" alt="Strict Password Change Flow" style={{ maxWidth: '600px', margin: '0 auto', borderRadius: '12px' }} />
 </div>
 
+<Tip>
+  **Proactive Security:** For maximum account integrity, cybersecurity standards recommend updating your password every 90 to 120 days.
+</Tip>
+
 ### 4. Account Deactivation
 
-We respect your choices. If you ever stop farming or no longer wish to use the app, you have the right to request that your personal account be deactivated.
+Users maintain full autonomy over their digital footprint and may request account deactivation at any time via the Security Settings.
 
 <Warning>
-  **Important Warning:** Deleting your account is permanent. If you delete your account and the 30-day waiting period passes, all your historical harvest records, payment ledgers, and farming insights will be gone forever.
+  **Critical Notice:** Account deletion is irreversible following the 30-day grace period. Historical harvest weights, payment ledgers, and AI-driven agricultural insights cannot be recovered once purged.
 </Warning>
 
 <Steps>
-  <Step title="Request Deactivation">
-    Go to your settings and tap **Deactivate Account**. Because this is a major action, we will send an email to double-check that you really want to do this, and not just a child playing with your phone.
+  <Step title="Initiate Deactivation">
+    The user selects **Deactivate Account** and must verify their intent via MFA to prevent accidental deletion.
     
     <div align="center">
       <img src="/images/deactivate-account-dialog.jpeg" alt="Account Deactivation Dialog" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
-  <Step title="The 30-Day Waiting Period">
-    We don't delete everything immediately, just in case you made a mistake! Your account is put to "sleep" for 30 days. If you change your mind and want your farm data back, simply log back into the app before the 30 days are over, and everything will be restored.
+  <Step title="Grace Period">
+    The account is transitioned into a suspended state for 30 days. The user may rescind the deactivation request simply by executing a successful login within this timeframe.
   </Step>
-  <Step title="Permanent Deletion">
-    If 30 days pass and you haven't logged back in, the system will permanently wipe your personal details.
+  <Step title="Permanent Purge">
+    Following the 30-day window, the system executes a permanent data purge.
     
     <Accordion title="Backend Security: Cascading Data Anonymization" icon="server">
       **What happens under the hood:** To maintain the integrity of Sasini's overall agricultural and financial analytics while complying with data protection laws, the backend performs a "Cascading Anonymization." The user's personal identifiable information (PII) like Name, Email, and Phone Number are permanently deleted and replaced with randomized string values. Their harvest weights and dates remain for corporate accounting, but they can mathematically never be traced back to the individual farmer again.
