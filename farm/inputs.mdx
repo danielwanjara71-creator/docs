@@ -1,0 +1,128 @@
+---
+title: 'Farm Inputs & Agri Shop'
+icon: 'store'
+---
+
+<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
+  A complete guide to the Sasini Agri Shop. Browse high-quality fertilizers, seeds, and tools, manage your digital cart, and seamlessly order inputs with zero upfront costs. 
+</p>
+
+Farming requires the right tools at the right time. The Sasini Agri Shop is a built-in digital marketplace designed specifically for our registered farmers. Instead of traveling to the factory or paying out-of-pocket, you can order certified inputs directly through the app. The costs are simply deducted from your future harvest payments once the items are delivered.
+
+---
+
+## 1. Browsing the Agri Shop
+
+The Agri Shop is organized into clean, easy-to-navigate tabs so you can find exactly what your farm needs in seconds.
+
+<Steps>
+  <Step title="Navigate the Categories">
+    Open the **Agri Shop** page. At the top of the screen, you will see a sliding tab menu categorizing our inventory:
+    * **Fertilizers:** Access certified NPK, foliar, and organic fertilizers.
+    * **Seeds:** Order high-yield tea clones, coffee seedlings, and cover crops.
+    * **Tools:** Browse pruning shears, harvesting baskets, and protective gear.
+    * **Sasini Retail (Coming Soon):** Exclusive access to finished Sasini consumer products.
+  </Step>
+
+  <Step title="Select and Calculate">
+    Tap on any item to view its details, price, and application instructions. Use the **(+)** and **(-)** buttons to adjust the quantity. The app instantly calculates your total estimated cost on the screen.
+  </Step>
+
+  <Step title="Add to Cart">
+    Tap the **Add to Cart** button. A brief success message will appear, confirming the item is queued for checkout.
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Real-Time Inventory Sync" icon="server">
+    **Under the Hood:** The Agri Shop frontend is connected via WebSockets to the central Sasini ERP. When a user browses, the system performs a real-time inventory check. If an item drops below the reserve threshold at the warehouse, the API instantly grays out the "Add to Cart" button, preventing overselling.
+  </Accordion>
+  <Accordion title="Backend Security: Cart State Management" icon="server">
+    **Under the Hood:** Cart data is not just stored locally. It is serialized and pushed to a secure Redis cache on the backend. This means if a farmer's phone battery dies halfway through shopping, their cart is perfectly preserved upon their next login.
+  </Accordion>
+</AccordionGroup>
+
+<div align="center">
+  <img src="/images/agri-shop-tabs.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
+
+<Tip>
+  **Pro Tip:** Always check the 'Fertilizer' tab a few weeks before the rainy season begins. Sasini occasionally offers subsidized rates for early-bird input orders!
+</Tip>
+
+---
+
+## 2. Checkout & Order Submission
+
+Once you have gathered everything you need, it's time to submit your request to the factory. 
+
+<Steps>
+  <Step title="Review Your Cart">
+    Navigate to the **Cart** tab under the Orders Management page. Here, you will see a summary of all selected items, quantities, and the grand total. You can safely remove items or adjust quantities here before finalizing.
+  </Step>
+  
+  <Step title="Provide Delivery Details">
+    Before tapping 'Checkout', the system requires delivery validation. You must provide:
+    * **Alternative Phone Number:** In case your primary registered number is off network during delivery.
+    * **Delivery Location:** Pinpoint exactly where the truck should drop the inputs (e.g., "Main Farm Gate" or "Secondary Plot").
+  </Step>
+
+  <Step title="Submit & Confirm">
+    Tap **Submit Order**. 
+    1. The app will emit a clear **Success Beep Tone**.
+    2. A green confirmation popup will appear on your screen.
+    3. A unique **Order ID** (e.g., `ORD-8492-X`) is generated instantly.
+  </Step>
+</Steps>
+
+<Info>
+  **How Payment Works:** You do not need M-Pesa or a credit card to use the Agri Shop. By submitting the order, you authorize Sasini to deliver the goods and securely deduct the exact total from your upcoming crop delivery payments. 
+</Info>
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Transactional Payload Queueing" icon="server">
+    **Under the Hood:** Upon clicking 'Submit', the frontend encrypts the cart payload and sends it to an asynchronous message broker (like RabbitMQ). This ensures that even if thousands of farmers order fertilizer at the exact same second, zero orders are dropped. The server processes them sequentially and generates immutable Order IDs.
+  </Accordion>
+  <Accordion title="Backend Security: Ledger Pre-Authorization" icon="server">
+    **Under the Hood:** The backend cross-references the order total with the farmer's historical yield metrics and current account standing. It flags orders that exceed the farmer's realistic deductive capacity for manual admin review, protecting both the factory and the farmer from over-leveraging.
+  </Accordion>
+</AccordionGroup>
+
+<div align="center">
+  <img src="/images/checkout-success.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+</div>
+
+---
+
+## 3. Order Tracking & Management
+
+Transparency is critical. The **Orders Management** page acts as your personal logistics dashboard, divided into three stages: Cart, Orders, and History.
+
+### The 4 Order Stages
+Every request moves through a strict lifecycle:
+1. **Pending:** Your order has been received but factory staff haven't started packing it yet. *(You can only cancel your order at this stage).*
+2. **Processing:** The warehouse team is currently packing your items onto the delivery truck.
+3. **Completed:** The items have been successfully delivered to your farm.
+4. **Cancelled:** The order was aborted by you or rejected by the factory (e.g., out of stock).
+
+<Steps>
+  <Step title="Monitor Active Orders">
+    Check the **Orders** tab to track anything that is currently *Pending* or *Processing*. 
+  </Step>
+  <Step title="Review History">
+    Check the **History** tab to see a complete ledger of all your *Completed* and *Cancelled* orders from the past seasons.
+  </Step>
+  <Step title="Check Notifications">
+    Whenever your order changes stages (e.g., moves from Pending to Processing), an automatic alert is sent to your **Notifications** page under the Orders tab, complete with your Order ID for easy tracking.
+  </Step>
+</Steps>
+
+<Warning>
+  **Cancellation Rule:** You can safely remove items from your cart or cancel a **Pending** order. However, once an order status shifts to **Processing**, it cannot be cancelled via the app, as the goods are already in transit.
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Backend Security: State Machine Enforcement" icon="server">
+    **Under the Hood:** Order statuses are governed by a strict Finite State Machine (FSM) in the database. A "Completed" order cannot mathematically revert to "Pending". This ensures the deductive payment ledger remains perfectly synchronized with the physical inventory ledger.
+  </Accordion>
+</AccordionGroup>
