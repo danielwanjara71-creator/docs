@@ -34,7 +34,7 @@ The Agri Shop is organized into clean, easy-to-navigate tabs so you can find exa
   </Accordion>
 
 <div align="center">
-  <img src="/images/agrishop.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/agrishop.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <Tip>
@@ -66,7 +66,7 @@ Once you have gathered everything you need, it's time to submit your request to 
     3. A unique **Order ID** (e.g., `OD-***849***`) is generated instantly and also sent to your notifications page under **Orders** Tab.
 
       <div align="center">
-        <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+        <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
       </div>
   </Step>
 
@@ -122,8 +122,6 @@ Every request moves through a strict lifecycle:
   **Cancellation Rule:** You can safely remove items from your cart or cancel a **Pending** order. However, once an order status shifts to **Processing**, it cannot be cancelled via the app, as the goods are already in transit.
 </Warning>
 
-<AccordionGroup>
   <Accordion title="Backend Security: State Machine Enforcement" icon="server">
     **Under the Hood:** Order statuses are governed by a strict Finite State Machine (FSM) in the database. A "Completed" order cannot mathematically revert to "Pending". This ensures the deductive payment ledger remains perfectly synchronized with the physical inventory ledger.
   </Accordion>
-</AccordionGroup>
