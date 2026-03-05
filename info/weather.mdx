@@ -1,0 +1,82 @@
+---
+title: 'Live Weather & Smart Alerts'
+icon: 'cloud-sun'
+---
+
+<p style={{ color: '#A3E635', fontSize: '1.2rem', fontWeight: '500', marginBottom: '2rem' }}>
+  Never let the weather catch you off guard. Experience hyper-accurate, GPS-driven forecasting that moves with you, alongside critical agronomy alerts broadcast directly from Sasini HQ.
+</p>
+
+Farming is dictated by the skies. We have integrated the most powerful Google Weather API servers into the app to give you minute-by-minute forecasting based on your exact physical coordinates.
+
+---
+
+## 1. Dynamic GPS Forecasting
+
+To use this feature, you must have an active internet connection and **Grant Location Access** when prompted by your device. 
+
+<Steps>
+  <Step title="Current Conditions">
+    The moment the page loads, it fetches your live GPS coordinates. You will instantly see today's exact temperature, rain probability, wind speed, air pressure, and humidity levels.
+  </Step>
+
+  <Step title="Tomorrow's Outlook">
+    Scroll down to see the predictive day-time and night-time temperatures for the next 24 hours, helping you plan your harvest or spraying schedule.
+  </Step>
+
+  <Step title="Live Refresh">
+    If you travel from the valley to the highlands, the app detects your movement. The weather API automatically refreshes to provide data for your new location.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Info>
+  **Privacy Note:** Your live location is strictly used to ping the weather servers. We do not track your real-time movements in our database.
+</Info>
+
+<div style={{ height: '20px' }} />
+
+<Tip>
+  **Global Exploration:** Need to check the weather in a different county or country? Scroll down to our embedded **Meteobox** integration, which allows you to search global locations and view extensive monthly forecasts and historical weather data!
+</Tip>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Geolocation Polling & API Rate Limiting" icon="server">
+    **Under the Hood:** To prevent bankrupting the Google Weather API account, the app uses intelligent debouncing. If a farmer is driving, the app will not ping the API every single second. It waits for the user to stop moving for a set interval before triggering the refresh payload.
+  </Accordion>
+  <Accordion title="Backend Security: iFrame Sandboxing" icon="server">
+    **Under the Hood:** The external Meteobox site is embedded using a secure `<iframe>`. We apply strict sandboxing rules to ensure the external site cannot execute malicious scripts or access the user's Sasini authentication tokens.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 2. Admin Alerts & Pro Tips
+
+Beneath the weather data, you will find your localized command center for agricultural warnings. These are manually updated by the Sasini agronomy team.
+
+<Steps>
+  <Step title="Critical Alerts">
+    Watch this space for high-priority banners regarding sudden **Weather Alerts** (flash floods), **Pest Alerts** (regional locust swarms), or **Drought Warnings**. 
+  </Step>
+  <Step title="Pro Farming Tips">
+    Sasini regularly publishes bite-sized, actionable tips to help you maximize your yield, such as optimal pruning techniques or soil conservation methods.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Warning>
+  **Act Fast:** If you see a Red Pest Alert in your dashboard, it means a severe outbreak has been verified within your immediate geographical zone. Take preventative measures immediately!
+</Warning>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Admin CMS & Webhook Broadcasting" icon="server">
+    **Under the Hood:** Alerts are pushed from the Admin Console. When an admin publishes a "Drought Alert", the backend fires a webhook that instantly updates the NoSQL document for all active users, ensuring the alert appears on their screen without requiring an app update.
+  </Accordion>
+</AccordionGroup>
