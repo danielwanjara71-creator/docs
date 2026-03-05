@@ -1,0 +1,83 @@
+---
+title: 'Sasini AI: Your Smart Farming Assistant'
+icon: 'robot'
+---
+
+Farming is complex, and sometimes you need answers at 2:00 AM. Sasini AI is designed to be the sweetest, warmest, and most capable digital agronomist. Whether you have a question about our payment schedules, or you need to instantly diagnose a strange spot on your coffee leaves, the AI is ready to assist.
+
+---
+
+## 1. Chatting with Sasini AI
+
+The AI is built for deep, meaningful conversations. It understands context, remembers your current session, and provides highly accurate, Sasini-approved advice.
+
+<Steps>
+  <Step title="Ask Anything">
+    Simply type your question into the chat box. You have a massive **1,000-character limit** per message, allowing you to explain your farm's exact situation in deep detail.
+  </Step>
+
+  <Step title="Get Instant Answers">
+    The AI processes complex algorithms in milliseconds. While it is trained to answer general world knowledge, its primary directive is to prioritize Sasini-related protocols, crop management, and logistical help.
+  </Step>
+
+  <Step title="Manage Your Privacy">
+    Want to start fresh? Tap the **Delete Chat** icon. This doesn't just clear your screen; it triggers a permanent wipe of the conversation from our database, ensuring your privacy is absolute.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Tip>
+  **Pro Tip:** Be as descriptive as possible! Instead of asking "Why is my tea yellow?", ask "My tea leaves at the top of the ridge have yellow edges and the soil is very dry. What should I do?"
+</Tip>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Gemini API & Vector Embeddings" icon="server">
+    **Under the Hood:** We don't just use a generic AI. User queries are routed through a secure API tunnel to the Google Gemini Pro engine. Before answering, the system queries a Vector Database (like Pinecone) containing thousands of Sasini PDF manuals and datasets, injecting that specific knowledge into the AI's context window.
+  </Accordion>
+  <Accordion title="Backend Security: Hard Delete Protocol" icon="server">
+    **Under the Hood:** When a user taps 'Delete Chat', the frontend sends a `DELETE` HTTP request to the server. We enforce a "Hard Delete" at the database level (e.g., MongoDB or PostgreSQL), completely dropping the user's session ID thread. No ghost data is kept.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 2. Real-Time Image Diagnosis
+
+The crown jewel of Sasini AI is its multi-modal vision capability. It can "see" what you see.
+
+<Steps>
+  <Step title="Upload a Photo">
+    Tap the **Attachment/Camera** icon next to the chat bar to take a live photo of a pest, a diseased leaf, or even a broken farm tool.
+  </Step>
+
+  <Step title="Add Context">
+    Type a brief message along with the image, such as "What bug is this eating my macadamia?" and hit send.
+  </Step>
+
+  <Step title="Receive Diagnosis & Solutions">
+    The AI will analyze the image pixel-by-pixel, identify the pest or disease, and immediately recommend the exact chemical treatment you should order from the Sasini Agri Shop.
+  </Step>
+</Steps>
+
+<div style={{ height: '20px' }} />
+
+<Info>
+  **Lighting Matters:** For the most accurate AI diagnosis, ensure your photo is taken in bright daylight and the camera is fully focused on the affected area.
+</Info>
+
+<div style={{ height: '20px' }} />
+
+<Tip>
+  **Integration Tip:** If the AI recommends a fertilizer, you can navigate straight to the 'Farm Tools' tab to order it instantly!
+</Tip>
+
+<div style={{ height: '20px' }} />
+
+<AccordionGroup>
+  <Accordion title="Backend Security: Base64 Encoding & Vision Processing" icon="server">
+    **Under the Hood:** Images uploaded to the AI are converted into a secure Base64 payload or temporarily hosted on an S3 bucket before being passed to the Gemini Vision API. The image is purged from the temporary processing cache immediately after the inference is returned to save server costs.
+  </Accordion>
+</AccordionGroup>
