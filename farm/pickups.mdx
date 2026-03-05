@@ -33,7 +33,7 @@ To ensure the logistics team dispatches the correct size of truck to the right l
 </Steps>
 
 <div align="center">
-  <img src="/images/pickup-form.jpeg" alt="Produce Pickup Request Form" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/pickup.jpeg" alt="Produce Pickup Request Form" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
 </div>
 
 <Tip>
@@ -52,19 +52,20 @@ To prevent fake requests and wasted factory fuel, the app requires visual proof 
   </Step>
 
   <Step title="Submit Request">
-    Once all fields are green, tap **Confirm & Request Pickup**.
+    Once all fields are filled, tap **Submit **.
     1. The app will sound a **Confirmation Beep**.
     2. A success message will appear on your screen.
-    3. The system generates a highly tracking code (e.g., `PU-992-TEA`).
   </Step>
 </Steps>
 
+
+<div align="center">
+   <img src="/images/success.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
 <AccordionGroup>
-  <Accordion title="Backend Security: Geospatial Routing Engine" icon="server">
-    **Under the Hood:** When a pickup coordinate is submitted, the backend pings a geospatial routing API (like Google Maps Distance Matrix). It cross-references the coordinates with active fleet GPS locations, estimating the optimal route and warning the admin console if a requested location is unreachable by heavy trucks.
-  </Accordion>
   <Accordion title="Backend Security: Media Sanitization & S3 Storage" icon="server">
-    **Under the Hood:** The uploaded proof image is not saved directly to the database. The app strips the image of malicious EXIF data, compresses it, and securely uploads it to an Amazon S3 Bucket. The database simply stores a secure URL link to that bucket, keeping the app blazingly fast.
+    **Under the Hood:** The uploaded proof image is not saved directly to the database. The app strips the image of malicious EXIF data, compresses it, and securely uploads it to an Google Cloud Bucket. The database simply stores a secure URL link to that bucket, keeping the app blazingly fast.
   </Accordion>
   <Accordion title="Backend Security: Idempotent Request Generation" icon="server">
     **Under the Hood:** If a farmer has a poor network connection and accidentally taps 'Submit' five times in a row, the backend uses Idempotency Keys to recognize it is the exact same request. It will only generate one Pickup ID, preventing the dispatch of five duplicate trucks.
@@ -79,15 +80,14 @@ Once requested, tracking the status of your logistics truck is entirely automate
 
 <Steps>
   <Step title="In-App Notifications">
-    Navigate to your **Notifications** page and tap the **Pickups** tab. Here, you will see your active request, the designated Pickup ID, and real-time status updates (e.g., *Truck Dispatched*).
+    Navigate to your **Notifications** page and tap the **Pickups** tab. Here, you will see your status of your active request, whether it is accepted or declined.
   </Step>
   <Step title="Contacting Support">
-    If there is a delay or you need to speak to logistics, open the **Sasini Support** chat. Simply provide your **Pickup ID**. The support agent will immediately query this ID in their admin system to see the exact GPS location of your assigned driver.
-  </Step>
+    If there is a delay or you need to speak to logistics, open the **Sasini Support** chat or contact them direclty via contacts provided on the **Help & Support** page.
 </Steps>
 
 <div align="center">
-  <img src="/images/pickup-tracking.jpeg" alt="Pickup Tracking and Notifications" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/notp.jpeg" alt="Pickup Tracking and Notifications" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
 </div>
 
 <Warning>
