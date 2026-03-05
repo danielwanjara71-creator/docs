@@ -29,10 +29,6 @@ The Sasini ecosystem operates across diverse demographics. To ensure accurate da
   <Step title="Select Preferred Language">
     Users must select between **English**, **Swahili**, **French**, or **German**. This selection executes a global state update, translating all UI components and instructions.
     
-    <Accordion title="Backend Security: Secure State Initialization" icon="server">
-      **What happens under the hood:** When a language is selected, the backend generates a secure, localized environment state saved in an encrypted, tamper-proof local storage container. This ensures malicious actors cannot inject foreign scripts or XSS attacks through manipulated language files.
-    </Accordion>
-    
     <div align="center">
       <img src="/images/language-selection.jpeg" alt="Language Selection Screen" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px' }} />
     </div>
@@ -48,20 +44,17 @@ The Sasini ecosystem operates across diverse demographics. To ensure accurate da
 Account creation is strictly limited to authorized personnel. Before establishing a profile, the system must verify the user against the central Sasini factory database.
 
 <Steps>
-  <Step title="Input Farmer ID">
-    The user is required to input their officially registered **Sasini Farmer ID**. This establishes the crucial link between the digital account and real-world delivery records.
+  <Step title="Input Farmer ID and other credentials">
+    The user is required to input their officially registered **Sasini Farmer ID**, **National ID** and **Phone Number**. This establishes the crucial link between the digital account and real-world delivery records.
 
     <Accordion title="Backend Security: Parameterized Query Execution" icon="server">
-      **What happens under the hood:** To absolutely prevent SQL Injection, the backend sanitizes the Farmer ID using parameterized queries. It strips the input of executable code before querying the encrypted database. Invalid IDs throw a generic `Validation Failed` error to give hackers zero clues about our structure.
+      **What happens under the hood:** To absolutely prevent SQL Injection, the backend sanitizes the Farmer ID, National ID and Phone Number using parameterized queries. It strips the input of executable code before querying the encrypted database. Invalid IDs throw a generic `Validation Failed`.
     </Accordion>
   </Step>
 
   <Step title="System Verification">
-    The Easyway Web API queries the central database. If verified, the app retrieves the farmer's foundational profile data and authorizes progression to the security setup phase. If invalid, the process is securely halted.
+    If verified, the app retrieves the farmer's foundational profile data and authorizes progression to the security setup phase. If invalid, the process is securely halted.
 
-    <Accordion title="Backend Security: Anti-Brute Force Rate Limiting" icon="server">
-      **What happens under the hood:** Hackers use automated "bots" to guess IDs. The Sasini backend employs strict **Rate Limiting**. If a device attempts too many invalid IDs, the backend's firewall permanently blacklists their IP address, stopping brute-force attacks instantly.
-    </Accordion>
   </Step>
 </Steps>
 
@@ -81,8 +74,8 @@ Following validation, the user must secure their digital identity using Multi-Fa
   <Step title="Enter Credentials">
     The user registers their primary **Email Address** and establishes a secure **Password** for future authentication.
 
-    <Accordion title="Backend Security: TLS 1.3 Payload Encryption" icon="server">
-      **What happens under the hood:** When the user taps "Submit", their password is NOT sent as plain text. It is encrypted locally on the phone. Even if intercepted over public Wi-Fi, it appears as an unbreakable string of randomized alphanumeric garbage.
+    <Accordion title="Backend Security: Backend Security: Encryption & Password Protection" icon="server">
+      **What happens under the hood:** When the user taps “Submit,” the password is encrypted locally on the device before transmission, so even if intercepted over public Wi-Fi it appears as an unreadable string of randomized characters. Sasini never stores actual passwords—the backend converts them using a salted cryptographic hashing algorithm, creating a one-way hash that makes stolen database data useless to attackers. 🔐
     </Accordion>
   </Step>
   
@@ -93,9 +86,6 @@ Following validation, the user must secure their digital identity using Multi-Fa
     * At least one **number**
     * At least one **special symbol** (e.g., @, #, $, !)
 
-    <Accordion title="Backend Security: Cryptographic Password Hashing" icon="server">
-      **What happens under the hood:** Sasini **never** stores actual passwords. The backend runs the password through a cryptographic hashing algorithm with a unique mathematical "salt". This turns the password into a one-way hash, making database breaches useless to attackers.
-    </Accordion>
   </Step>
 
   <Step title="Legal Agreements">
@@ -115,21 +105,19 @@ Following validation, the user must secure their digital identity using Multi-Fa
 
 To eliminate fraudulent registrations and guarantee secure communication channels, the platform mandates a rigorous email verification loop.
 
+<Accordion title="Backend Security: Secure Token & Link Protection" icon="server">
+  **What happens under the hood:** Verification links contain cryptographically secure tokens generated using a CSPRNG. These tokens are unique, tied to the request context, and expire quickly. Once used, the system immediately invalidates the token to prevent replay attacks or reuse of old links.
+</Accordion>
+
 <Steps>
   <Step title="Dispatch Verification">
     Upon submitting the registration payload, the server dispatches a secure, time-sensitive verification link to the registered email address.
 
-    <Accordion title="Backend Security: CSPRNG Token Generation" icon="server">
-      **What happens under the hood:** The backend generates a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) token tied to the user's IP, device, and a strict timer. It is mathematically unguessable.
-    </Accordion>
   </Step>
   
   <Step title="Action Required">
     The user must navigate to their email client and click the embedded secure link. This verifies cryptographic ownership of the designated address.
 
-    <Accordion title="Backend Security: Anti-Phishing Link Validation" icon="server">
-      **What happens under the hood:** The system instantly invalidates the token after a single click, completely neutralizing "Replay Attacks" where a hacker tries to reuse an old link.
-    </Accordion>
   </Step>
 
   <Step title="Resend Protocol">
