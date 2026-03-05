@@ -76,7 +76,7 @@ Once you have gathered everything you need, it's time to submit your request to 
     2. Now you have successfully placed you order and Sasini will reach out incase of anything.
 
       <div align="center">
-        <img src="/images/not.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+        <img src="/images/not.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
       </div>
   </Step>
 </Steps>
@@ -87,7 +87,7 @@ Once you have gathered everything you need, it's time to submit your request to 
   </Accordion>
 
 <div align="center">
-  <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <Info>
@@ -118,10 +118,14 @@ Every request moves through a strict lifecycle:
   </Step>
 </Steps>
 
+<Accordion title="Backend Security: State Machine Enforcement" icon="server">
+    **Under the Hood:** Order statuses are governed by a strict Finite State Machine (FSM) in the database. A "Completed" order cannot mathematically revert to "Pending". This ensures the deductive payment ledger remains perfectly synchronized with the physical inventory ledger.
+</Accordion>
+
+<div align="center">
+  <img src="/images/cancel.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
 <Warning>
   **Cancellation Rule:** You can safely remove items from your cart or cancel a **Pending** order. However, once an order status shifts to **Processing**, it cannot be cancelled via the app, as the goods are already in transit.
 </Warning>
-
-  <Accordion title="Backend Security: State Machine Enforcement" icon="server">
-    **Under the Hood:** Order statuses are governed by a strict Finite State Machine (FSM) in the database. A "Completed" order cannot mathematically revert to "Pending". This ensures the deductive payment ledger remains perfectly synchronized with the physical inventory ledger.
-  </Accordion>
