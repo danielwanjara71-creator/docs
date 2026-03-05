@@ -65,9 +65,9 @@
           {
             "group": "Farm Management Logistics",
             "pages": [
-              "farm-tools/inputs",
-              "farm-tools/pickups",
-              "farm-tools/pests"
+              "farm/inputs",
+              "farm/pickups",
+              "farm/pests"
             ]
           },
           {
