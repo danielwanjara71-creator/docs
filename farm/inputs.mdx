@@ -74,25 +74,20 @@ Once you have gathered everything you need, it's time to submit your request to 
     Navigate to **Dashboard** and click the little **Bell Icon** at the top center. 
     1. Navigate under **Orders** tab and see the details of your order.
     2. Now you have successfully placed you order and Sasini will reach out incase of anything.
-
-      <div align="center">
-        <img src="/images/not.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
-      </div>
   </Step>
 </Steps>
-
 
   <Accordion title="Backend Security: Transactional Payload Queueing" icon="server">
     **Under the Hood:** Upon clicking 'Submit', the frontend encrypts the cart payload and sends it to an asynchronous message broker (like RabbitMQ). This ensures that even if thousands of farmers order fertilizer at the exact same second, zero orders are dropped. The server processes them sequentially and generates immutable Order IDs.
   </Accordion>
 
 <div align="center">
-  <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+     <img src="/images/not.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
-<Info>
+<Note>
   **How Payment Works:** You do not need M-Pesa or a credit card to use the Agri Shop. By submitting the order, you authorize Sasini to deliver the goods and securely deduct the exact total from your upcoming crop delivery payments. 
-</Info>
+</Note>
 ---
 
 ## 3. Order Tracking & Management
