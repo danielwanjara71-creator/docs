@@ -29,14 +29,13 @@ The Agri Shop is organized into clean, easy-to-navigate tabs so you can find exa
   </Step>
 </Steps>
 
-<AccordionGroup>
   <Accordion title="Backend Security: Real-Time Inventory Sync" icon="server">
     **Under the Hood:** The Agri Shop frontend is connected via WebSockets to the central Sasini ERP. When a user browses, the system performs a real-time inventory check. If an item drops below the reserve threshold at the warehouse, the API instantly grays out the "Add to Cart" button, preventing overselling.
   </Accordion>
-  <Accordion title="Backend Security: Cart State Management" icon="server">
+
+  <Note>
     **Under the Hood:** Cart data is not just stored locally. It is serialized and pushed to a secure Redis cache on the backend. This means if a farmer's phone battery dies halfway through shopping, their cart is perfectly preserved upon their next login.
-  </Accordion>
-</AccordionGroup>
+  </Note>
 
 <div align="center">
   <img src="/images/agri-shop-tabs.jpeg" alt="Agri Shop Categories and Products" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
