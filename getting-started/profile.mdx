@@ -7,7 +7,7 @@ icon: 'shield-check'
   A comprehensive breakdown of the Sasini App identity pipeline. Discover our Farmer Validation, strict Re-authentication loops, and the military-grade backend protocols protecting your data from creation to deactivation.
 </p>
 
-To ensure a highly secure and customized experience, the Sasini App utilizes a strict identity pipeline. Whether you are registering, recovering an account, or securely modifying credentials, our systems operate on a **Zero-Trust Architecture**. 
+To ensure a highly secure and customized experience, the Sasini App utilizes a multi-step identity pipeline. Whether you are registering for the first time, recovering an account, or securely modifying credentials, this process verifies that every user is a legitimate member of the Sasini ecosystem. Our systems operate on a **Zero-Trust Architecture**, ensuring your financial and agricultural data is permanently protected.
 
 ---
 
@@ -15,9 +15,11 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
 
 ### 1. Localization & Language Selection
 
+Because the Sasini ecosystem spans diverse demographics, the very first step of the journey is localization, ensuring every farmer can navigate the app comfortably.
+
 <Steps>
   <Step title="Launch the Application">
-    Upon opening the app, users configure their preferred language.
+    Upon opening the app for the first time, users are presented with a welcome screen to configure their preferred language.
     
     <Accordion title="Backend Security: Zero-Trust Handshake" icon="server">
       **What happens under the hood:** The moment the app launches, it initiates a secure "handshake" with the Sasini servers. We assume every connection is potentially hostile. The backend instantly scans the connection for SSL/TLS 1.3 encryption certificates to ensure the network hasn't been compromised before allowing the app to load.
@@ -25,7 +27,7 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
   </Step>
   
   <Step title="Select Preferred Language">
-    Users can choose between **English**, **Swahili**, **French**, or **German**.
+    Users can choose between **English**, **Swahili**, **French**, or **German**. This selection immediately updates the entire app interface to match the user's preference.
     
     <Accordion title="Backend Security: Secure State Initialization" icon="server">
       **What happens under the hood:** When a language is selected, the backend generates a secure, localized environment state saved in an encrypted, tamper-proof local storage container. This ensures malicious actors cannot inject foreign scripts or XSS attacks through manipulated language files.
@@ -39,9 +41,11 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
 
 ### 2. Farmer Validation Protocol
 
+Before a new profile can be created, the system must verify that the user is an officially recognized Sasini farmer.
+
 <Steps>
   <Step title="Input Farmer ID">
-    The user inputs their unique Sasini Farmer ID into the system.
+    The user inputs their unique, official Sasini Farmer ID into the system to begin the linkage process.
 
     <Accordion title="Backend Security: Parameterized Query Execution" icon="server">
       **What happens under the hood:** To absolutely prevent SQL Injection, the backend sanitizes the Farmer ID using parameterized queries. It strips the input of executable code before querying the encrypted database. Invalid IDs throw a generic `Validation Failed` error to give hackers zero clues about our structure.
@@ -49,7 +53,7 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
   </Step>
 
   <Step title="System Verification">
-    If valid, the system allows the farmer to proceed.
+    The system queries the central Sasini database. If the ID is invalid, it shows an error preventing account creation. If valid, the system retrieves the farmer's base details and allows them to proceed to the secure account creation phase.
 
     <Accordion title="Backend Security: Anti-Brute Force Rate Limiting" icon="server">
       **What happens under the hood:** Hackers use automated "bots" to guess IDs. The Sasini backend employs strict **Rate Limiting**. If a device attempts too many invalid IDs, the backend's firewall permanently blacklists their IP address, stopping brute-force attacks instantly.
@@ -59,9 +63,11 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
 
 ### 3. Account Creation & MFA Setup
 
+Once validated, the user must secure their new account using our Multi-Factor Authentication (MFA) parameters.
+
 <Steps>
   <Step title="Enter Credentials">
-    The user inputs their **Email Address** and creates a secure **Password**.
+    The user inputs their personal **Email Address** and creates a secure **Password** that they will use to log in moving forward.
 
     <Accordion title="Backend Security: TLS 1.3 Payload Encryption" icon="server">
       **What happens under the hood:** When the user taps "Submit", their password is NOT sent as plain text. It is encrypted locally on the phone. Even if intercepted over public Wi-Fi, it appears as an unbreakable string of randomized alphanumeric garbage.
@@ -69,23 +75,33 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
   </Step>
   
   <Step title="Enforce Password Policies">
-    The system strictly enforces complex password rules.
+    To protect financial and farm data, the system strictly enforces the following password complexities:
+    * At least one **uppercase letter**
+    * At least one **lowercase letter**
+    * At least one **number**
+    * At least one **special symbol** (e.g., @, #, $, !)
 
     <Accordion title="Backend Security: Cryptographic Password Hashing" icon="server">
       **What happens under the hood:** Sasini **never** stores actual passwords. The backend runs the password through a cryptographic hashing algorithm with a unique mathematical "salt". This turns the password into a one-way hash, making database breaches useless to attackers.
     </Accordion>
   </Step>
+
+  <Step title="Legal Agreements">
+    The user must explicitly check the boxes confirming they have read and agree to the **Terms of Use** and **Privacy Policy** before proceeding.
+  </Step>
 </Steps>
 
 <Tip>
-  **Best Practice:** We recommend farmers use a combination of words they can easily remember but computers cannot easily guess (e.g., `Green#Coffee!Harvest99`).
+  **Best Practice for Farmers:** We recommend you use a combination of words you can easily remember but computers cannot easily guess (e.g., `Green#Coffee!Harvest99`). Do not share this password with anyone.
 </Tip>
 
 ### 4. Email Link Verification
 
+To prevent fraudulent accounts and ensure we can always contact you, Sasini enforces a strict email verification loop.
+
 <Steps>
   <Step title="Dispatch Verification">
-    A secure verification link is sent to the registered email address.
+    Upon submitting the registration details, a secure verification link is immediately sent to the user's registered email address.
 
     <Accordion title="Backend Security: CSPRNG Token Generation" icon="server">
       **What happens under the hood:** The backend generates a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) token tied to the user's IP, device, and a strict timer. It is mathematically unguessable.
@@ -93,21 +109,25 @@ To ensure a highly secure and customized experience, the Sasini App utilizes a s
   </Step>
   
   <Step title="Action Required">
-    The user clicks the secure link to confirm ownership.
+    The user must minimize the app, open their email client (like Gmail or Yahoo), and click the secure link inside the Sasini Welcome Email to confirm ownership of the address.
 
     <Accordion title="Backend Security: Anti-Phishing Link Validation" icon="server">
       **What happens under the hood:** The system instantly invalidates the token after a single click, completely neutralizing "Replay Attacks" where a hacker tries to reuse an old link.
     </Accordion>
   </Step>
+
+  <Step title="Resend Protocol">
+    If the email does not arrive immediately, the user must wait **60 seconds** before the app will allow them to trigger a new verification link.
+  </Step>
 </Steps>
 
 ## 5. Profile Finalization & Dashboard
 
-Once the email link is clicked and verified, the backend finalizes the registration. 
+Once the email link is clicked and verified, the backend finalizes the registration process. 
 
 <Steps>
   <Step title="Finalize Registration">
-    The user's secure profile is saved, their Unique Digital ID is permanently linked to their email, and the app automatically fetches their customized data. 
+    The user's secure profile is saved, their Unique Digital ID is permanently linked to their email, and the app automatically fetches their customized farm data (deliveries, history, etc.). 
 
     <Accordion title="Backend Security: JWT Session Issuance" icon="server">
       **What happens under the hood:** Upon successful verification, the server issues a secure **JSON Web Token (JWT)**. This token acts as a highly secure digital passport that is required for every single action the user takes moving forward. The token rotates securely, meaning even if a session is hijacked, it becomes useless within minutes, automatically locking out unauthorized users.
@@ -115,7 +135,7 @@ Once the email link is clicked and verified, the backend finalizes the registrat
   </Step>
 
   <Step title="Enter the Dashboard">
-    The user is then safely navigated to their main **Dashboard**, ready to explore the app!
+    The user is safely navigated away from the onboarding screens and directly into their main **Dashboard**, ready to explore the Sasini App!
 
     <Accordion title="Backend Security: Immutable Audit Logging" icon="server">
       **What happens under the hood:** The final step of registration triggers an automated, immutable log in our deep backend. The system records the successful secure registration in a write-only database vault. This provides complete traceability and ensures total transparency and security monitoring for the lifetime of the farmer's account.
@@ -131,21 +151,16 @@ Once the email link is clicked and verified, the backend finalizes the registrat
 
 ## Phase 2: Login & Access
 
-### 1. Credential Submission & Risk Analysis
+For existing farmers returning to the app, accessing the platform is straightforward but heavily fortified in the background.
+
+### 1. Credential Submission
 
 <Steps>
   <Step title="Enter Login Details">
-    The user inputs their email and password.
+    Returning users simply enter their registered Email Address and Password into the login portal and tap 'Sign In'.
     
     <Accordion title="Backend Security: Constant-Time Hash Comparison" icon="server">
       **What happens under the hood:** The backend retrieves the hashed password and applies the same algorithm to the newly typed password. To prevent "Timing Attacks," the server uses a constant-time comparison, taking the exact same microsecond to respond whether the password is right or wrong.
-    </Accordion>
-  </Step>
-  <Step title="Evaluate Login Context">
-    The system checks where the login is coming from.
-    
-    <Accordion title="Backend Security: Heuristic Threat Modeling" icon="server">
-      **What happens under the hood:** The backend analyzes device fingerprint and IP location. If a farmer logs in from Nairobi, and 10 minutes later a login attempt occurs from Eastern Europe, the heuristic engine flags it as impossible and blocks the foreign IP.
     </Accordion>
   </Step>
 </Steps>
@@ -156,18 +171,18 @@ Once the email link is clicked and verified, the backend finalizes the registrat
 
 ### 2. Contextual Risk Analysis
 
-Before granting access, the system evaluates the context of the login attempt to ensure it is the real user.
+Before letting the user in, the system double-checks that the login is safe.
 
 <Steps>
   <Step title="Evaluate Login Context">
-    The system checks where the login is coming from.
+    The system seamlessly checks the location and device of the login attempt to ensure it matches the farmer's usual habits.
     
     <Accordion title="Backend Security: Heuristic Threat Modeling" icon="server">
-      **What happens under the hood:** The backend analyzes the login metadata. It checks the device fingerprint, the IP address location, and the login velocity. For example, if a farmer logs in successfully from Nairobi, Kenya, and then 10 minutes later a login attempt occurs from a server in Eastern Europe, the backend's heuristic engine instantly flags it as impossible, blocks the foreign IP, and temporarily locks the account.
+      **What happens under the hood:** The backend analyzes device fingerprint and IP location. If a farmer logs in from Nairobi, and 10 minutes later a login attempt occurs from Eastern Europe, the heuristic engine flags it as impossible and blocks the foreign IP.
     </Accordion>
   </Step>
   <Step title="Manage Failed Attempts">
-    If the user types the wrong password, the system carefully manages the failure.
+    If the user types the wrong password, the system carefully manages the failure to prevent unauthorized guessing.
     
     <Accordion title="Backend Security: Exponential Backoff Protocol" icon="server">
       **What happens under the hood:** To defeat "Credential Stuffing" (where hackers use lists of stolen passwords from other websites), the backend uses Exponential Backoff. After 3 failed login attempts, the server introduces a time delay. After 5 attempts, the account is temporarily locked, requiring an email reset. 
@@ -177,18 +192,16 @@ Before granting access, the system evaluates the context of the login attempt to
 
 ### 3. Session Issuance & Dashboard Entry
 
-Once the credentials and context are verified, the user is granted access to the system.
-
 <Steps>
   <Step title="Issue Secure Session">
-    The backend authorizes the device and generates a secure session.
+    Once verified, the app silently authorizes the device to interact with the Sasini servers.
     
     <Accordion title="Backend Security: Short-Lived JWT & Device Binding" icon="server">
       **What happens under the hood:** The server issues a highly secure JSON Web Token (JWT). This token acts as a digital, temporary passport required for every action the user takes. It is strictly bound to the user's specific device fingerprint. Furthermore, the token is "Short-Lived"—it automatically expires in the background and is silently refreshed. This means even if a highly sophisticated hacker managed to steal the session data, the token would be useless to them within minutes.
     </Accordion>
   </Step>
   <Step title="Access Granted">
-    The user is routed securely to their personalized dashboard, and an immutable log of the login is recorded for audit purposes.
+    The user is routed securely to their personalized dashboard to view their latest produce and financial data.
     
     <Accordion title="Backend Security: Immutable Access Logging" icon="server">
       **What happens under the hood:** The successful login triggers an automated log in our deep backend vault. This system records the time, IP, and device of the successful login in a write-only database. This provides complete traceability and ensures total transparency for the lifetime of the farmer's account, guaranteeing absolute data integrity.
@@ -200,11 +213,17 @@ Once the credentials and context are verified, the user is granted access to the
 
 ## Phase 3: Lifecycle & Security Settings
 
-To protect farmers who may share devices or occasionally forget their credentials, the Sasini App features a robust account recovery and lifecycle management suite.
+To protect farmers who may share devices with family members or occasionally forget their credentials, the Sasini App features a robust, easy-to-use account recovery and lifecycle management suite.
 
 ### 1. Logging Out
 
 Farmers can securely terminate their active session at any time from the settings menu.
+
+<Steps>
+  <Step title="Initiate Logout">
+    Navigate to the Profile or Settings menu and tap the **Log Out** button. A confirmation dialog will appear to ensure you didn't click it by accident.
+  </Step>
+</Steps>
 
 <Accordion title="Backend Security: JWT Revocation & Blacklisting" icon="server">
   **What happens under the hood:** Clicking "Log Out" does not just clear the screen. The frontend deletes the secure token from local storage, while the backend actively adds that specific session token to a cryptographic "Blacklist." Even if a hacker managed to copy the token right before the user logged out, the server will reject it entirely.
@@ -216,21 +235,21 @@ Farmers can securely terminate their active session at any time from the setting
 
 ### 2. Forgot Password (Account Recovery)
 
-If a user forgets their password, they can initiate a secure recovery pipeline.
+If a user forgets their password, they can initiate a secure recovery pipeline without losing their farm data.
 
 <Steps>
   <Step title="Request Reset">
-    The user clicks "Forgot Password" on the login screen and enters their email.
+    On the main login screen, the user taps the **Forgot Password** link and enters the email address associated with their account.
   </Step>
   <Step title="Secure Email Link">
-    A temporary reset link is dispatched. It expires in exactly 15 minutes.
+    The system will email the user a temporary reset link. This link is time-sensitive and expires in exactly 15 minutes.
     
     <Accordion title="Backend Security: Anti-Enumeration & Signed URLs" icon="server">
       **What happens under the hood:** To prevent hackers from guessing which emails are registered, the backend will *always* say "If this email exists, a reset link has been sent," regardless of whether the email is valid. The link sent contains a securely signed URL payload that can only be decrypted by our servers.
     </Accordion>
   </Step>
   <Step title="Create New Password">
-    The user clicks the link and establishes a new, strictly parameterized password.
+    The user opens their email, clicks the link, and is taken to a secure screen to type a brand new password that meets all security parameters.
   </Step>
 </Steps>
 
@@ -240,31 +259,31 @@ If a user forgets their password, they can initiate a secure recovery pipeline.
 
 ### 3. The Strict "Change Password" Loop
 
-If a user *knows* their password but wants to update it for security reasons, the Sasini App enforces a **Strict Re-authentication Loop**. This ensures that someone who finds an unlocked phone cannot hijack the account.
+If a user *knows* their password but wants to update it for security reasons, the Sasini App enforces a **Strict Re-authentication Loop**. This ensures that someone who finds an unlocked phone cannot hijack the account by simply changing the password while the farmer isn't looking.
 
 <Steps>
   <Step title="Initiate Change">
-    The user clicks "Change Password" in their profile. To prove ownership, the app **immediately and deliberately logs the user out**.
+    The user navigates to their profile and clicks **Change Password**. To prove they are the true owner of the device, the app **immediately and deliberately logs the user out**.
   </Step>
   <Step title="Re-Authenticate">
-    The user must log back in with their *current* password. 
+    The user is presented with the login screen and must log back in using their *current* password. 
   </Step>
   <Step title="The Password Dialog">
-    Upon successful login, a special system dialog intercepts the dashboard and says: *"Identity Verified. Click Continue to change your password."*
+    Upon successful login, the app intercepts the dashboard and shows a special system dialog stating: *"Identity Verified. Click Continue to change your password."*
     
     <div align="center">
       <img src="/images/change-password-dialog.jpeg" alt="Identity Verified Dialog" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
   <Step title="Update & Auto-Logout">
-    The user inputs their new password (which must pass all complexity parameters). Once submitted, the system **automatically logs them out again**.
+    The user enters their new password (which must pass all complexity rules like uppercase, numbers, and symbols). Once they hit Submit, the system **automatically logs them out again**.
     
     <div align="center">
       <img src="/images/change-password-page.jpeg" alt="Enter New Password Page" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
   <Step title="Final Verification">
-    The user must now log in with the *new* password, cementing it in their memory and verifying the database update was successful.
+    The user must now log in one final time with their *new* password. This cements the new password in their memory and verifies that the database updated correctly.
     
     <Accordion title="Backend Security: Cryptographic Salt Rotation" icon="server">
       **What happens under the hood:** When the password is changed, the backend doesn't just hash the new password; it generates a brand new cryptographic "Salt" (a random data string) and destroys the old one. It also instantly revokes all active sessions on any other devices, forcing anyone using the account to re-authenticate immediately.
@@ -278,25 +297,25 @@ If a user *knows* their password but wants to update it for security reasons, th
 
 ### 4. Account Deactivation
 
-We respect the privacy and autonomy of our farmers. Users can request to deactivate or permanently delete their accounts from the Security Settings.
+We respect the privacy and autonomy of our farmers. Users can request to deactivate or permanently delete their accounts directly from the Security Settings.
 
 <Warning>
-  **Warning:** Account Deletion is permanent. Once the grace period expires, historical harvest data, payout ledgers, and AI insights cannot be recovered.
+  **Warning:** Account Deletion is permanent. Once the 30-day grace period expires, historical harvest data, payout ledgers, and AI insights cannot be recovered.
 </Warning>
 
 <Steps>
   <Step title="Initiate Deactivation">
-    The user selects "Deactivate Account" and must undergo an MFA email verification to prove intent.
+    The user navigates to settings, selects **Deactivate Account**, and must undergo an MFA email verification to prove they truly intend to delete their profile.
     
     <div align="center">
       <img src="/images/deactivate-account-dialog.jpeg" alt="Account Deactivation Dialog" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px' }} />
     </div>
   </Step>
   <Step title="Grace Period">
-    The account is placed in a suspended state for 30 days, during which the user can cancel the request by simply logging back in.
+    The account is immediately placed in a suspended state for 30 days. If the farmer changes their mind, they can cancel the deletion request simply by logging back into the app before the 30 days are up.
   </Step>
   <Step title="Permanent Purge">
-    After 30 days, the data is wiped.
+    If the user does not log back in after 30 days, their personal data is permanently wiped from the system.
     
     <Accordion title="Backend Security: Cascading Data Anonymization" icon="server">
       **What happens under the hood:** To maintain the integrity of Sasini's overall agricultural and financial analytics while complying with data protection laws, the backend performs a "Cascading Anonymization." The user's personal identifiable information (PII) like Name, Email, and Phone Number are permanently deleted and replaced with randomized string values. Their harvest weights and dates remain for corporate accounting, but they can mathematically never be traced back to the individual farmer again.
