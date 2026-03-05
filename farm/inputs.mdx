@@ -67,23 +67,18 @@ Once you have gathered everything you need, it's time to submit your request to 
   </Step>
 </Steps>
 
-<Info>
-  **How Payment Works:** You do not need M-Pesa or a credit card to use the Agri Shop. By submitting the order, you authorize Sasini to deliver the goods and securely deduct the exact total from your upcoming crop delivery payments. 
-</Info>
 
-<AccordionGroup>
   <Accordion title="Backend Security: Transactional Payload Queueing" icon="server">
     **Under the Hood:** Upon clicking 'Submit', the frontend encrypts the cart payload and sends it to an asynchronous message broker (like RabbitMQ). This ensures that even if thousands of farmers order fertilizer at the exact same second, zero orders are dropped. The server processes them sequentially and generates immutable Order IDs.
   </Accordion>
-  <Accordion title="Backend Security: Ledger Pre-Authorization" icon="server">
-    **Under the Hood:** The backend cross-references the order total with the farmer's historical yield metrics and current account standing. It flags orders that exceed the farmer's realistic deductive capacity for manual admin review, protecting both the factory and the farmer from over-leveraging.
-  </Accordion>
-</AccordionGroup>
 
 <div align="center">
-  <img src="/images/checkout-success.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
+  <img src="/images/cart.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '1rem auto', borderRadius: '12px', border: '2px solid #A3E635' }} />
 </div>
 
+<Info>
+  **How Payment Works:** You do not need M-Pesa or a credit card to use the Agri Shop. By submitting the order, you authorize Sasini to deliver the goods and securely deduct the exact total from your upcoming crop delivery payments. 
+</Info>
 ---
 
 ## 3. Order Tracking & Management
