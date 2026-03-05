@@ -136,13 +136,13 @@ Upon successful token verification, the backend commits the registration data an
 <Accordion title="Backend Security: Secure Sessions & Audit Logging" icon="server">
   **What happens under the hood:** After verification, the server issues a secure **JWT session token** used to authenticate all user actions, with frequent rotation to limit hijacked sessions. The event is also recorded in an **immutable, write-only audit log** to ensure permanent traceability and ongoing security monitoring.
 </Accordion>
-``` 🔐
+
 
 <Steps>
   <Step title="Data Synchronization">
     The user's Unique Digital ID is finalized, and the application securely syncs historical harvest data, delivery logs, and payment ledgers from the factory servers.
 
-  </Step>
+</Step>
 
   <Step title="Enter the Dashboard">
     The user is routed directly to the main **Dashboard**, finalizing the onboarding sequence.
