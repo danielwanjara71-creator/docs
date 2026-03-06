@@ -33,9 +33,14 @@ The AI is built for deep, meaningful conversations. It understands context, reme
 
 <div style={{ height: '20px' }} />
 
+<div align="center">
+  <img src="/images/ai.jpeg" alt="Current Month Deliveries" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
+
 <AccordionGroup>
   <Accordion title="Backend Security: Gemini API & Vector Embeddings" icon="server">
-    **Under the Hood:** We don't just use a generic AI. User queries are routed through a secure API tunnel to the Google Gemini Pro engine. Before answering, the system queries a Vector Database (like Pinecone) containing thousands of Sasini PDF manuals and datasets, injecting that specific knowledge into the AI's context window.
+    **Under the Hood:** We don't just use a generic AI. User queries are routed through a secure API tunnel to the Google Gemini Pro engine which powers the Sasini AI. Before answering, the system queries the Database containing massive databets of Sasini PDF manuals and datasets, injecting that specific knowledge into the AI's context window.
   </Accordion>
   <Accordion title="Backend Security: Hard Delete Protocol" icon="server">
     **Under the Hood:** When a user taps 'Delete Chat', the frontend sends a `DELETE` HTTP request to the server. We enforce a "Hard Delete" at the database level (e.g., MongoDB or PostgreSQL), completely dropping the user's session ID thread. No ghost data is kept.
@@ -64,11 +69,16 @@ The crown jewel of Sasini AI is its multi-modal vision capability. It can "see" 
 
 <div style={{ height: '20px' }} />
 
-<Info>
+<Note>
   **Lighting Matters:** For the most accurate AI diagnosis, ensure your photo is taken in bright daylight and the camera is fully focused on the affected area.
-</Info>
+</Note>
 
 <div style={{ height: '20px' }} />
+
+<div align="center">
+  <img src="/images/image.jpeg" alt="Current Month Deliveries" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
 
 <Tip>
   **Integration Tip:** If the AI recommends a fertilizer, you can navigate straight to the 'Farm Tools' tab to order it instantly!
@@ -78,6 +88,6 @@ The crown jewel of Sasini AI is its multi-modal vision capability. It can "see" 
 
 <AccordionGroup>
   <Accordion title="Backend Security: Base64 Encoding & Vision Processing" icon="server">
-    **Under the Hood:** Images uploaded to the AI are converted into a secure Base64 payload or temporarily hosted on an S3 bucket before being passed to the Gemini Vision API. The image is purged from the temporary processing cache immediately after the inference is returned to save server costs.
+    **Under the Hood:** Images uploaded to the AI are converted into a secure Base64 payload or temporarily hosted on a bucket before being passed to the Sasini AI. The image is purged from the temporary processing cache immediately after the inference is returned to save server costs.
   </Accordion>
 </AccordionGroup>
