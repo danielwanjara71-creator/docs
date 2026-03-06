@@ -23,20 +23,23 @@ All news articles are curated and published directly by the Sasini communication
 
 <div style={{ height: '20px' }} />
 
-<Warning>
-  **Admin Notice (Sasini Team):** This feature requires dedicated manpower! A live news feed is only useful if it is updated frequently. The administrative team must be prepared to write, format, and publish content consistently to keep farmers engaged.
-</Warning>
-
-<div style={{ height: '20px' }} />
-
-<AccordionGroup>
   <Accordion title="Backend Security: Real-Time WebSocket Syncing" icon="server">
     **Under the Hood:** The news feed does not require the user to "pull down to refresh." We utilize WebSockets (via Firebase or Supabase). The moment the Admin hits 'Publish', the database emits a state-change event that instantly injects the new DOM element into the user's active screen.
   </Accordion>
+<div style={{ height: '20px' }} />
+
+<div align="left">
+  <img src="/images/news.jpeg" alt="News Previews" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+<div align="right">
+  <img src="/images/newsa.jpeg" alt="News Previews" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
+<div style={{ height: '20px' }} />
+
   <Accordion title="Backend Security: Image Compression Pipelines" icon="server">
     **Under the Hood:** To ensure the news feed doesn't consume all of the farmer's mobile data, the backend automatically compresses all admin-uploaded cover images to modern WebP formats before serving them to the app.
   </Accordion>
-</AccordionGroup>
 
 ---
 
@@ -62,6 +65,11 @@ Want to know what your produce is worth on the global stage?
 
 <div style={{ height: '20px' }} />
 
+<div align="center">
+  <img src="/images/rates.jpeg" alt="News Previews" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+</div>
+
+<div style={{ height: '20px' }} />
 <Tip>
   **Financial Planning:** Keep a close eye on the market rates during the off-season. If prices are trending upward globally, you can confidently invest in better fertilizers from the Agri Shop!
 </Tip>
