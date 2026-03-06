@@ -9,47 +9,45 @@ Farming is dictated by the skies. We have integrated the most powerful Google We
 
 ## 1. Dynamic GPS Forecasting
 
-To use this feature, you must have an active internet connection and **Grant Location Access** when prompted by your device. 
+To use this feature, you must have an active internet connection and **Grant Location Access** when prompted by your device. 
 
 <Steps>
-  <Step title="Current Conditions">
-    The moment the page loads, it fetches your live GPS coordinates. You will instantly see today's exact temperature, rain probability, wind speed, air pressure, and humidity levels.
-  </Step>
-
-  <Step title="Tomorrow's Outlook">
-    Scroll down to see the predictive day-time and night-time temperatures for the next 24 hours, helping you plan your harvest or spraying schedule.
-  </Step>
-
-  <Step title="I'm always with you feature">
-    If you travel from the valley to the highlands, the app detects your movement. The weather API automatically refreshes to provide data for your new location.
-  </Step>
+  <Step title="Current Conditions">
+    The moment the page loads, it fetches your live GPS coordinates. You will instantly see today's exact temperature, rain probability, wind speed, air pressure, and humidity levels.
+  </Step>
+  <Step title="Tomorrow's Outlook">
+    Scroll down to see the predictive day-time and night-time temperatures for the next 24 hours, helping you plan your harvest or spraying schedule.
+  </Step>
+  <Step title="I'm always with you feature">
+    If you travel from the valley to the highlands, the app detects your movement. The weather API automatically refreshes to provide data for your new location.
+  </Step>
 </Steps>
 
 <div style={{ height: '20px' }} />
 
 <Note>
-  **Privacy Note:** Your live location is strictly used to ping the weather servers. We do not track your real-time movements in our database.
+  **Privacy Note:** Your live location is strictly used to ping the weather servers. We do not track your real-time movements in our database.
 </Note>
 
 <div align="center">
-  <img src="/images/weather.jpeg" alt="Weather Forecast Page" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+  <img src="/images/weather.jpeg" alt="Weather Forecast Page" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <div style={{ height: '20px' }} />
 
 <Tip>
-  **Global Exploration:** Need to check the weather in a different county or country? Scroll down to our embedded **MSN Weather** integration, which allows you to search global locations and view extensive monthly forecasts and historical weather data!
+  **Global Exploration:** Need to check the weather in a different county or country? Scroll down to our embedded **MSN Weather** integration, which allows you to search global locations and view extensive monthly forecasts and historical weather data!
 </Tip>
 
 <div style={{ height: '20px' }} />
 
 <AccordionGroup>
-  <Accordion title="Backend Security: Geolocation Polling & API Rate Limiting" icon="server">
-    **Under the Hood:** To prevent bankrupting the Google Weather API account, the app uses intelligent debouncing. If a farmer is driving, the app will not ping the API every single second. It waits for the user to stop moving for a set interval before triggering the refresh payload.
-  </Accordion>
-  <Accordion title="Backend Security: iFrame Sandboxing" icon="server">
-    **Under the Hood:** The external MSN Weather site is embedded using a secure `<iframe>`. We apply strict sandboxing rules to ensure the external site cannot execute malicious scripts or access the user's Sasini authentication tokens.
-  </Accordion>
+  <Accordion title="Backend Security: Geolocation Polling & API Rate Limiting" icon="server">
+    **Under the Hood:** To prevent bankrupting the Google Weather API account, the app uses intelligent debouncing. If a farmer is driving, the app will not ping the API every single second. It waits for the user to stop moving for a set interval before triggering the refresh payload.
+  </Accordion>
+  <Accordion title="Backend Security: iFrame Sandboxing" icon="server">
+    **Under the Hood:** The external MSN Weather site is embedded using a secure `<iframe>`. We apply strict sandboxing rules to ensure the external site cannot execute malicious scripts or access the user's Sasini authentication tokens.
+  </Accordion>
 </AccordionGroup>
 
 ---
@@ -59,56 +57,61 @@ To use this feature, you must have an active internet connection and **Grant Loc
 Beneath the weather data, you will find your localized command center for agricultural warnings. These are manually updated by the Sasini agronomy team.
 
 <Steps>
-  <Step title="Critical Alerts">
-    Watch this space for high-priority banners regarding sudden **Weather Alerts** (flash floods), **Pest Alerts** (regional locust swarms), or **Drought Warnings**. 
-  </Step>
-  <Step title="Pro Farming Tips">
-    Sasini regularly publishes bite-sized, actionable tips to help you maximize your yield, such as optimal pruning techniques or soil conservation methods.
-  </Step>
+  <Step title="Critical Alerts">
+    Watch this space for high-priority banners regarding sudden **Weather Alerts** (flash floods), **Pest Alerts** (regional locust swarms), or **Drought Warnings**. 
+  </Step>
+  <Step title="Pro Farming Tips">
+    Sasini regularly publishes bite-sized, actionable tips to help you maximize your yield, such as optimal pruning techniques or soil conservation methods.
+  </Step>
 </Steps>
 
 <div style={{ height: '20px' }} />
 
 <Warning>
-  **Act Fast:** If you see a Red Pest Alert in your dashboard, it means a severe outbreak has been verified within your immediate geographical zone. Take preventative measures immediately!
+  **Act Fast:** If you see a Red Pest Alert in your dashboard, it means a severe outbreak has been verified within your immediate geographical zone. Take preventative measures immediately!
 </Warning>
 
 <div style={{ height: '20px' }} />
 
 <div align="center">
-  <img src="/images/alerts.jpeg" alt="Alerts Section" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+  <img src="/images/alerts.jpeg" alt="Alerts Section" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
+<div style={{ height: '20px' }} />
+
 <AccordionGroup>
-  <Accordion title="Backend Security: Admin CMS & Webhook Broadcasting" icon="server">
-    **Under the Hood:** Alerts are pushed from the Admin Console. When an admin publishes a "Drought Alert", the backend fires a webhook that instantly updates the NoSQL document for all active users, ensuring the alert appears on their screen without requiring an app update.
-  </Accordion>
+  <Accordion title="Backend Security: Admin CMS & Webhook Broadcasting" icon="server">
+    **Under the Hood:** Alerts are pushed from the Admin Console. When an admin publishes a "Drought Alert", the backend fires a webhook that instantly updates the NoSQL document for all active users, ensuring the alert appears on their screen without requiring an app update.
+  </Accordion>
 </AccordionGroup>
+
+---
 
 ## 3. All-Time Round Weather
 
 For in-depth analysis beyond your current location, the app features an integrated portal to an expansive global weather platform. This is found at the bottom of the weather page.
 
 <Steps>
-  <Step title="Global Search">
-    Use the search tool within the platform to find any specific point or region across the entire world for free.
-  </Step>
-  <Step title="Massive Analysis">
-    Access high-level forecasting and real-time data visualizations that go beyond basic temperature readings.
-  </Step>
-  <Step title="History Analysis">
-    Review weather history for your specific area to understand long-term patterns and better prepare for upcoming seasons.
-  </Step>
+  <Step title="Global Search">
+    Use the search tool within the platform to find any specific point or region across the entire world for free.
+  </Step>
+  <Step title="Massive Analysis">
+    Access high-level forecasting and real-time data visualizations that go beyond basic temperature readings.
+  </Step>
+  <Step title="History Analysis">
+    Review weather history for your specific area to understand long-term patterns and better prepare for upcoming seasons.
+  </Step>
 </Steps>
 
 <div style={{ height: '20px' }} />
 
-<div align="center">
-  <img src="/images/external.jpeg" alt="Global Weather Platform" style={{ maxWidth: '350px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(0, 0, 0, 0.2)' }} />
+{/* Updated width and padding for the wide laptop screenshot */}
+<div align="center" style={{ padding: '0 10px' }}>
+  <img src="/images/external.jpeg" alt="Global Weather Platform" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(0, 0, 0, 0.2)' }} />
 </div>
 
-<div style={{ height: '10px' }} />
+<div style={{ height: '20px' }} />
 
 <Tip>
-**All round Access?** Simply scroll to the bottom of the weather screen and tap the external link to launch the full analytical suite.
+  **All round Access?** Simply scroll to the bottom of the weather screen and tap the external link to launch the full analytical suite.
 </Tip>
