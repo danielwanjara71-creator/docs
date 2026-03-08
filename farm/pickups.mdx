@@ -29,7 +29,7 @@ To ensure the logistics team dispatches the correct size of truck to the right l
 </Steps>
 
 <div align="center">
-  <img src="/images/pickup.jpeg" alt="Produce Pickup Request Form" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+  <img src="/images/pickup.jpeg" alt="Produce Pickup Request Form" style={{width: '100%', maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <Tip>
@@ -56,13 +56,13 @@ To prevent fake requests and wasted factory fuel, the app requires visual proof 
 
 
 <div align="center">
-   <img src="/images/success.jpeg" alt="Checkout Success and Order ID" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+   <img src="/images/success.jpeg" alt="Checkout Success and Order ID" style={{width: '100%', maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <br />
 
 <AccordionGroup>
-  <Accordion title="Backend Security: Media Sanitization & S3 Storage" icon="server">
+  <Accordion title="Backend Security: Media Sanitization & Storage" icon="server">
     **Under the Hood:** The uploaded proof image is not saved directly to the database. The app strips the image of malicious EXIF data, compresses it, and securely uploads it to an Google Cloud Bucket. The database simply stores a secure URL link to that bucket, keeping the app blazingly fast.
   </Accordion>
   <Accordion title="Backend Security: Idempotent Request Generation" icon="server">
@@ -86,7 +86,7 @@ Once requested, tracking the status of your logistics truck is entirely automate
 </Steps>
 
 <div align="center">
-  <img src="/images/notp.jpeg" alt="Pickup Tracking and Notifications" style={{ maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
+  <img src="/images/notp.jpeg" alt="Pickup Tracking and Notifications" style={{width: '100%', maxWidth: '300px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 4px 14px 0 rgba(118, 189, 34, 0.3)' }} />
 </div>
 
 <Warning>
